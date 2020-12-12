@@ -1,0 +1,667 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+	
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="asserts/materialize/css/materialize.min.css" media="screen,projection" />
+    <!-- Bootstrap Styles-->
+    <link href="asserts/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="asserts/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="asserts/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="asserts/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="asserts/js/Lightweight-Chart/cssCharts.css"> 
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand waves-effect waves-dark" href="index.html"><i class="large material-icons">insert_chart</i> <strong>会务系统</strong></a>
+
+                <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </nav>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#"><i class="fa fa-user fa-fw"></i> 我的主页</a>
+            </li>
+            <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
+            </li>
+            <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> 注销</a>
+            </li>
+        </ul>
+        <ul id="dropdown2" class="dropdown-content w250">
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-comment fa-fw"></i> 新信息
+                        <span class="pull-right text-muted small">4 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-twitter fa-fw"></i> 3 新朋友
+                        <span class="pull-right text-muted small">12 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-envelope fa-fw"></i> 消息汇总
+                        <span class="pull-right text-muted small">4 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-tasks fa-fw"></i> 新任务
+                        <span class="pull-right text-muted small">4 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-upload fa-fw"></i> 刷新服务
+                        <span class="pull-right text-muted small">4 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" href="#">
+                    <strong>See All Alerts</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <ul id="dropdown3" class="dropdown-content dropdown-tasks w250">
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>任务 1</strong>
+                            <span class="pull-right text-muted">60% 完成</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="sr-only">60% 完成 (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>任务 2</strong>
+                            <span class="pull-right text-muted">28% 完成</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100" style="width: 28%">
+                                <span class="sr-only">28% 完成</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>任务 3</strong>
+                            <span class="pull-right text-muted">60% 完成</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="sr-only">60% 完成 (warning)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>任务 4</strong>
+                            <span class="pull-right text-muted">85% 完成</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
+                                <span class="sr-only">85% 完成 (danger)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+        </ul>
+        <ul id="dropdown4" class="dropdown-content dropdown-tasks w250">
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>北京大学</strong>
+                        <span class="pull-right text-muted">
+                                        <em>今天</em>
+                                    </span>
+                    </div>
+                    <div>你考研没过线，老师叫你去办公室，说是有事找你.......</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>MiKu</strong>
+                        <span class="pull-right text-muted">
+                                        <em>前天</em>
+                                    </span>
+                    </div>
+                    <div>你四级没过，老师叫你去办公室，说是有事找你.......</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>Fireworks</strong>
+                        <span class="pull-right text-muted">
+                                        <em>昨天</em>
+                                    </span>
+                    </div>
+                    <div>你高数挂了，老师叫你去办公室，说是有事找你.......</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" href="#">
+                    <strong>Read All Messages</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a class="waves-effect waves-dark" href="/index"><i class="fa fa-dashboard"></i> 主页面</a>
+                    </li>
+                    <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> UI 元素</a>
+                    </li>
+                    <li>
+                        <a href="/chart" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> 图表总览</a>
+                    </li>
+                    <li>
+                        <a href="/message" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> 消息中心</a>
+                    </li>
+
+                    <li>
+                        <a href="/table" class="active-menu waves-effect waves-dark"><i class="fa fa-table"></i> 全部会议</a>
+                    </li>
+                    <li>
+                        <a href="/form" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 发起会议 </a>
+                    </li>
+
+
+                    <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 目前事务<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">一号链接</a>
+                            </li>
+                            <li>
+                                <a href="#">二号链接</a>
+                            </li>
+                            <li>
+                                <a href="#">三号链接<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">三分之一</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">三分之二</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">三分之三</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/agenda" class="waves-effect waves-dark"><i class="fa fa-fw fa-file"></i> 事务总览</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+
+
+
+
+
+
+
+
+
+
+        <div id="page-wrapper" >
+		  <div class="header"> 
+                        <h1 class="page-header">
+                            全部会议
+                        </h1>
+						<ol class="breadcrumb">
+					  <li><a href="#">Home</a></li>
+					  <li><a href="#">全部会议</a></li>
+					  <li class="active">Data</li>
+					</ol> 
+									
+		</div>
+		
+            <div id="page-inner"> 
+               
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="card">
+                        <div class="card-action">
+                             Advanced Tables
+                        </div>
+                        <div class="card-content">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>会议名</th>
+                                            <th>会议概述</th>
+                                            <th>会议时间</th>
+                                            <th>发起者</th>
+                                            <th>选项</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr th:each="conference:${conferenceList}">
+                                            <td th:text="${conference.name}"></td>
+                                            <td th:text="${conference.about}"></td>
+                                            <td th:text="${conference.datetime}"></td>
+                                            <td th:text="${conference.organizername}"></td>
+                                            <td>
+                                                <a href="#">详细</a>
+                                                <a href="#">参加</a>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+                <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-6">
+                  <!--   Kitchen Sink -->
+                    <div class="card">
+                        <div class="card-action">
+                            Kitchen Sink
+                        </div>
+                        <div class="card-content">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- End  Kitchen Sink -->
+                </div>
+                <div class="col-md-6">
+                     <!--   Basic Table  -->
+                    <div class="card">
+                        <div class="card-action">
+                            Basic Table
+                        </div>
+                        <div class="card-content">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                      <!-- End  Basic Table  -->
+                </div>
+            </div>
+                <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-6">
+                      <!--    Striped Rows Table  -->
+                    <div class="card">
+                        <div class="card-action">
+                            Striped Rows Table
+                        </div>
+                        <div class="card-content">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  End  Striped Rows Table  -->
+                </div>
+                <div class="col-md-6">
+                    <!--    Bordered Table  -->
+                    <div class="card">
+                        <div class="card-action">
+                            Bordered Table
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="card-content">
+                            <div class="table-responsive table-bordered">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                     <!--  End  Bordered Table  -->
+                </div>
+            </div>
+                <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-6">
+                     <!--    Hover Rows  -->
+                    <div class="card">
+                        <div class="card-action">
+                            Hover Rows
+                        </div>
+                        <div class="card-content">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End  Hover Rows  -->
+                </div>
+                <div class="col-md-6">
+                     <!--    Context Classes  -->
+                    <div class="card">
+                       
+                        <div class="card-action">
+                            Context Classes
+                        </div>
+                        
+                        <div class="card-content">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="success">
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr class="info">
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr class="warning">
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr class="danger">
+                                            <td>4</td>
+                                            <td>John</td>
+                                            <td>Smith</td>
+                                            <td>@jsmith</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  end  Context Classes  -->
+                </div>
+            </div>
+                <!-- /. ROW  -->
+         
+               <footer><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p></footer>
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+ 
+
+    <!-- jQuery Js -->
+    <script src="asserts/js/jquery-1.10.2.js"></script>
+	
+	<!-- Bootstrap Js -->
+    <script src="asserts/js/bootstrap.min.js"></script>
+	
+	<script src="asserts/materialize/js/materialize.min.js"></script>
+	
+    <!-- Metis Menu Js -->
+    <script src="asserts/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="asserts/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="asserts/js/morris/morris.js"></script>
+	
+	
+	<script src="asserts/js/easypiechart.js"></script>
+	<script src="asserts/js/easypiechart-data.js"></script>
+	
+	 <script src="asserts/js/Lightweight-Chart/jquery.chart.js"></script>
+	 <!-- DATA TABLE SCRIPTS -->
+    <script src="asserts/js/dataTables/jquery.dataTables.js"></script>
+    <script src="asserts/js/dataTables/dataTables.bootstrap.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+    </script>
+    <!-- Custom Js -->
+    <script src="asserts/js/custom-scripts.js"></script> 
+ 
+
+</div>
+</body>
+
+</html>

@@ -1,0 +1,491 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+	
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="asserts/materialize/css/materialize.min.css" media="screen,projection" />
+    <!-- Bootstrap Styles-->
+    <link href="asserts/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="asserts/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="asserts/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="asserts/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="asserts/js/Lightweight-Chart/cssCharts.css"> 
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand waves-effect waves-dark" href="index.html"><i class="large material-icons">insert_chart</i> <strong>会务系统</strong></a>
+
+                <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </nav>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#"><i class="fa fa-user fa-fw"></i> 我的主页</a>
+            </li>
+            <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
+            </li>
+            <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> 注销</a>
+            </li>
+        </ul>
+        <ul id="dropdown2" class="dropdown-content w250">
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-comment fa-fw"></i> 新信息
+                        <span class="pull-right text-muted small">4 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-twitter fa-fw"></i> 3 新朋友
+                        <span class="pull-right text-muted small">12 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-envelope fa-fw"></i> 消息汇总
+                        <span class="pull-right text-muted small">4 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-tasks fa-fw"></i> 新任务
+                        <span class="pull-right text-muted small">4 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-upload fa-fw"></i> 刷新服务
+                        <span class="pull-right text-muted small">4 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" href="#">
+                    <strong>See All Alerts</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <ul id="dropdown3" class="dropdown-content dropdown-tasks w250">
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>任务 1</strong>
+                            <span class="pull-right text-muted">60% 完成</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="sr-only">60% 完成 (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>任务 2</strong>
+                            <span class="pull-right text-muted">28% 完成</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100" style="width: 28%">
+                                <span class="sr-only">28% 完成</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>任务 3</strong>
+                            <span class="pull-right text-muted">60% 完成</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="sr-only">60% 完成 (warning)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>任务 4</strong>
+                            <span class="pull-right text-muted">85% 完成</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
+                                <span class="sr-only">85% 完成 (danger)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+        </ul>
+        <ul id="dropdown4" class="dropdown-content dropdown-tasks w250">
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>北京大学</strong>
+                        <span class="pull-right text-muted">
+                                        <em>今天</em>
+                                    </span>
+                    </div>
+                    <div>你考研没过线，老师叫你去办公室，说是有事找你.......</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>MiKu</strong>
+                        <span class="pull-right text-muted">
+                                        <em>前天</em>
+                                    </span>
+                    </div>
+                    <div>你四级没过，老师叫你去办公室，说是有事找你.......</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>Fireworks</strong>
+                        <span class="pull-right text-muted">
+                                        <em>昨天</em>
+                                    </span>
+                    </div>
+                    <div>你高数挂了，老师叫你去办公室，说是有事找你.......</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" href="#">
+                    <strong>Read All Messages</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a class="waves-effect waves-dark" href="/index"><i class="fa fa-dashboard"></i> 主页面</a>
+                    </li>
+                    <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> UI 元素</a>
+                    </li>
+                    <li>
+                        <a href="/chart" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> 图表总览</a>
+                    </li>
+                    <li>
+                        <a href="/message" class="active-menu waves-effect waves-dark"><i class="fa fa-qrcode"></i> 消息中心</a>
+                    </li>
+
+                    <li>
+                        <a href="/table" class="waves-effect waves-dark"><i class="fa fa-table"></i> 全部会议</a>
+                    </li>
+                    <li>
+                        <a href="/form" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 发起会议 </a>
+                    </li>
+
+
+                    <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 目前事务<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">一号链接</a>
+                            </li>
+                            <li>
+                                <a href="#">二号链接</a>
+                            </li>
+                            <li>
+                                <a href="#">三号链接<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">三分之一</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">三分之二</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">三分之三</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/agenda" class="waves-effect waves-dark"><i class="fa fa-fw fa-file"></i> 日程总览</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+
+
+
+
+
+
+
+
+
+
+
+        <div id="page-wrapper" >
+			  <div class="header"> 
+                        <h1 class="page-header">
+                            Tabs & Panels
+                        </h1>
+						<ol class="breadcrumb">
+					  <li><a href="#">Home</a></li>
+					  <li><a href="#">Tabs & Panels</a></li>
+					  <li class="active">Data</li>
+					</ol> 
+									
+		</div>
+		
+            <div id="page-inner"> 
+                                 
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                   <div class="card teal">
+						<div class="card-content white-text">
+						  <span class="card-title">Card Title</span>
+						  <p>I am a very simple card. I am good at containing small bits of information.
+						  I am convenient because I require little markup to use effectively.</p>
+						</div>
+						<div class="card-action">
+						  <a href="#">This is a link</a>
+						  <a href="#">This is a link</a>
+						</div>
+					  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                   <div class="card">
+						<div class="card-content">
+						  <span class="card-title">Card Title</span>
+						  <p>I am a very simple card. I am good at containing small bits of information.
+						  I am convenient because I require little markup to use effectively.</p>
+						</div>
+						<div class="card-action">
+						  <a href="#">This is a link</a>
+						  <a href="#">This is a link</a>
+						</div>
+					  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                        <div class="card blue-grey darken-1">
+						<div class="card-content white-text">
+						  <span class="card-title">Card Title</span>
+						  <p>I am a very simple card. I am good at containing small bits of information.
+						  I am convenient because I require little markup to use effectively.</p>
+						</div>
+						<div class="card-action">
+						  <a href="#">This is a link</a>
+						  <a href="#">This is a link</a>
+						</div>
+					  </div>
+                </div>
+            </div>
+                   <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="card">
+						<div class="card-image waves-effect waves-block waves-light">
+						  <img class="activator" src="http://materializecss.com/images/office.jpg">
+						</div>
+						<div class="card-content">
+						  <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+						  <p><a href="#">This is a link</a></p>
+						</div>
+						<div class="card-reveal">
+						  <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+						  <p>Here is some more information about this product that is only revealed once clicked on.</p>
+						</div>
+					  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                     <div class="card">
+						<div class="card-image waves-effect waves-block waves-light">
+						  <img class="activator" src="http://materializecss.com/images/office.jpg">
+						</div>
+						<div class="card-content">
+						  <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+						  <p><a href="#">This is a link</a></p>
+						</div>
+						<div class="card-reveal">
+						  <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+						  <p>Here is some more information about this product that is only revealed once clicked on.</p>
+						</div>
+					  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                        <div class="card">
+						<div class="card-image waves-effect waves-block waves-light">
+						  <img class="activator" src="http://materializecss.com/images/office.jpg">
+						</div>
+						<div class="card-content">
+						  <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+						  <p><a href="#">This is a link</a></p>
+						</div>
+						<div class="card-reveal">
+						  <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+						  <p>Here is some more information about this product that is only revealed once clicked on.</p>
+						</div>
+					  </div>
+                </div>
+            </div>
+                    <!-- /. ROW  --> 
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="card">
+                        <div class="card-action">
+                            Basic Tabs
+                        </div>
+                        <div class="card-content"> 
+							 <ul class="collapsible" data-collapsible="accordion">
+								<li>
+								  <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+								  <div class="collapsible-body"><p>Tt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur..</p></div>
+								</li>
+								<li>
+								  <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+								  <div class="collapsible-body"><p>Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p></div>
+								</li>
+								<li>
+								  <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+								  <div class="collapsible-body"><p>Sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p></div>
+								</li>
+							  </ul> 
+                            
+                            </div>
+                        </div>
+                    </div> 
+                <div class="col-md-6 col-sm-6">
+                    <div class="card">
+                        <div class="card-action">
+                            Tabs
+                        </div>
+                        <div class="card-content">
+                           <div class="col">
+							  <ul class="tabs">
+								<li class="tab col s3"><a href="#test1">Test 1</a></li>
+								<li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
+								<li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li>
+								<li class="tab col s3"><a href="#test4">Test 4</a></li>
+							  </ul>
+							</div>
+							<div class="clearBoth"><br/></div>
+							<div id="test1" class="col s12"><p>Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p></div>
+							<div id="test2" class="col s12"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p></div>
+							<div id="test3" class="col s12"><p>Bpsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p></div>
+							<div id="test4" class="col s12"><p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p></div>
+                           <div class="clearBoth"><br/></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                    <!-- /. ROW  --> 
+				<footer><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p></footer>
+					</div>
+			 <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="asserts/js/jquery-1.10.2.js"></script>
+	
+	<!-- Bootstrap Js -->
+    <script src="asserts/js/bootstrap.min.js"></script>
+	
+	<script src="asserts/materialize/js/materialize.min.js"></script>
+	
+    <!-- Metis Menu Js -->
+    <script src="asserts/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="asserts/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="asserts/js/morris/morris.js"></script>
+	
+	
+	<script src="asserts/js/easypiechart.js"></script>
+	<script src="asserts/js/easypiechart-data.js"></script>
+	
+	 <script src="asserts/js/Lightweight-Chart/jquery.chart.js"></script>
+	
+    <!-- Custom Js -->
+    <script src="asserts/js/custom-scripts.js"></script> 
+	<script>
+	$(document).ready(function(){
+	 $('ul.tabs').tabs();
+		$('.collapsible').collapsible({
+		  accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+		  onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
+		  onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
+		}
+	  );
+	});
+	</script>
+ 
+
+</body>
+
+</html>
