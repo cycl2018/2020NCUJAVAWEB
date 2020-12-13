@@ -1,19 +1,17 @@
 package cn.edu.ncu.meeting.dao;
 
 import cn.edu.ncu.meeting.entity.Attendee;
+import cn.edu.ncu.meeting.entity.Organizer;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Mapper
 @Repository
-public interface IAttendeeDao {
+public interface IOrganizerDao {
 
-    //初始化的时候，添加一场比赛
-    Attendee findbyu_p(@Param("username") String username, @Param("password") String password);
+    //查询数据库，登录信息
+    Organizer findOrganizerByu_p(@Param("name") String name, @Param("password") String password);
 
     void register(String username, String password);
 }

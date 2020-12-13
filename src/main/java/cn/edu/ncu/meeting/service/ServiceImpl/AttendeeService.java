@@ -16,4 +16,10 @@ public class AttendeeService implements IAttendeeService {
     public Attendee findbyu_p(String username, String password) {
         return attendeeDao.findbyu_p(username,password);
     }
+
+    //注册
+    @Override
+    public void register(String username, String password) {
+        attendeeDao.register(username,password);
+    }
 }

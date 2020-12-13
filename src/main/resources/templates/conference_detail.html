@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>发起会议</title>
+    <title>会议详情</title>
 	
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="asserts/materialize/css/materialize.min.css" media="screen,projection" />
@@ -21,33 +21,11 @@
     <link rel="stylesheet" href="asserts/js/Lightweight-Chart/cssCharts.css">
 
     <script type="text/javascript">
-        function checkrenshu() {
-            //判断人数是否符合格式
-            var reg = new RegExp('^\\d{1,4}$')
-            renshu = document.getElementById("renshu").value;
-            if(reg.test(renshu)){
-                return true;
-            }else{
-                alert("会议人数请输入1-4位数字")
-                return false;
-            }
-        }
-        function checkhotel() {
-            //判断旅馆号是否符合格式
-            var reg = new RegExp('^\\d{1,4}$')
-            hotelid = document.getElementById("hotelid").value;
-            if(reg.test(hotelid)){
-                return true;
-            }else{
-                alert("旅馆编号请输入1-4位数字")
-                return false;
-            }
-        }
         function checknull() {
-            about = document.getElementById("about").value;
-            name_ = document.getElementById("name").value;
-            date_ = document.getElementById("datetime").value;
-            if(name_ =="" || about=="" || date_==""){
+            need = document.getElementById("need").value;
+            departtime = document.getElementById("departtime").value;
+            returntime = document.getElementById("returntime").value;
+            if(need =="" || departtime=="" || returntime==""){
                 alert("必填字段不能为空")
                 return false;
             }else {
@@ -56,9 +34,9 @@
         }
         function checkandsubmit() {
             //验证是否都符合要求
-            if( checkhotel() && checkrenshu() && checknull()){
+            if(checknull()){
                 //全部符合要求
-                document.getElementById("meeting").submit();
+                document.getElementById("participate").submit();
             }else{
 
             }
@@ -330,14 +308,14 @@
 
 
         <div id="page-wrapper" >
-<form class="col s12" id="meeting" action="/addconference" method="post">
+<form class="col s12" id="participate" action="/participate" method="post">
 		  <div class="header"> 
                         <h1 class="page-header">
-                             发起会议
+                             详细信息
                         </h1>
 						<ol class="breadcrumb">
 					  <li><a href="#">Home</a></li>
-					  <li><a href="#">发起会议</a></li>
+					  <li><a href="#">会议详情</a></li>
 					  <li class="active">Data</li>
 					</ol> 
 									
@@ -348,44 +326,36 @@
 			 <div class="col-lg-12">
 			 <div class="card">
                     <div class="card-action">
-                        会议基本信息（必填）
+                        会议基本信息
                     </div>
                     <div class="card-content">
 
           <div class="row">
             <div class="input-field col s6">
-              <input id="name" name="name" type="text" class="validate">
-              <label for="name">会议名</label>
+              <input readonly="readonly" style="font-weight: bold;color: black" type="text" class="validate" th:value="'会议名：'+${c_detail.name}">
             </div>
             <div class="input-field col s6">
-              <input id="datetime" name="datetime" type="datetime-local" class="validate">
+                <input readonly="readonly" style="font-weight: bold;color: black" type="text" class="validate" th:value="'会议时间：'+${c_detail.datetime}">
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-                <input id="about" name="about" type="text" class="validate">
-                <label for="about">会议描述</label>
+                <input readonly="readonly" style="font-weight: bold;color: black" type="text" class="validate" th:value="'会议描述：'+${c_detail.about}">
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="renshu" name="renshu" type="text" class="validate">
-              <label for="renshu">参会人数</label>
+                <input readonly="readonly" style="font-weight: bold;color: black" type="text" class="validate" th:value="'参会人数：'+${c_detail.renshu}">
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="hotelid" name="hotelid" type="text" class="validate">
-              <label for="hotelid">旅馆号</label>
+                <input readonly="readonly" style="font-weight: bold;color: black" type="text" class="validate" th:value="'旅馆号：'+${c_detail.hotelid}">
             </div>
           </div>
           <div class="row">
             <div class="col s12">
-              这是一个空闲字段
-              <div class="input-field inline">
-                <input id="empty" name="empty" type="text" class="validate">
-                <label for="empty" data-error="wrong" data-success="right">空闲字段</label>
-              </div>
+                <input readonly="readonly" style="font-weight: bold;color: black" type="text" class="validate" th:value="'发起人：'+${c_detail.organizername}">
             </div>
           </div>
         <div class="clearBoth"></div>
@@ -399,31 +369,28 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-action">
-                            会议二号联系人（选填）
+                            您的信息（必填）
                         </div>
                         <div class="card-content">
 								  <div class="row">
 									<div class="input-field col s6">
-									  <i class="material-icons prefix">account_circle</i>
-									  <input id="icon_prefix" type="text" class="validate">
-									  <label for="icon_prefix">姓名</label>
+                                        <input readonly="readonly" style="font-weight: bold;color: black" type="text" class="validate" th:value="'参会人姓名：'+${attendee.username}">
 									</div>
 									<div class="input-field col s6">
-									  <i class="material-icons prefix">phone</i>
-									  <input id="icon_telephone" type="tel" class="validate">
-									  <label for="icon_telephone">电话号码</label>
+                                        <input id="need" name="need" type="text" class="validate">
+                                        <label for="need">住宿要求</label>
 									</div>
 								  </div>
 								  <div class="row">
+                                      <label style="margin-left: 15px;font-weight: bold;color: black">出发时间</label>
 									<div class="input-field col s12">
-									  <input id="email" type="email" class="validate">
-									  <label for="email" data-error="wrong" data-success="right">邮箱地址</label>
+                                        <input id="departtime" name="departtime" type="datetime-local" class="validate">
 									</div>
 								  </div>
                                   <div class="row">
+                                      <label style="margin-left: 15px;font-weight: bold;color: black">返回时间</label>
                                     <div class="input-field col s12">
-                                      <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                      <label for="textarea1">住址</label>
+                                        <input id="returntime" name="returntime" type="datetime-local" class="validate">
                                     </div>
                                   </div>
 
@@ -438,10 +405,10 @@
                           </div>
                           <div class="switch">
                             <label>
-                              开放搜索
+                              关闭免打扰
                               <input type="checkbox">
                               <span class="lever"></span>
-                                屏蔽搜索
+                              开启免打扰
                             </label>
                           </div>
 
@@ -455,44 +422,44 @@
 				<div class="col-lg-6">
                     <div class="card">
                         <div class="card-action">
-                            会议内容方向（选填）
+                            会议其他需求（选填）
                         </div>
                         <div class="card-content">
 
                     <p>
                       <input name="group1" type="radio" id="test1" />
-                      <label for="test1">科普</label>
+                      <label for="test1">正式参会</label>
                     </p>
                     <p>
                       <input name="group1" type="radio" id="test2" />
-                      <label for="test2">规划</label>
+                      <label for="test2">旁听</label>
                     </p>
                     <p>
                       <input class="with-gap" name="group1" type="radio" id="test3"  />
-                      <label for="test3">宣讲</label>
+                      <label for="test3">后勤</label>
                     </p>
                     <p>
                       <input type="checkbox" id="test5" />
-                      <label for="test5">第二课堂学分</label>
+                      <label for="test5">残疾人帮助</label>
                     </p>
                     <p>
                       <input type="checkbox" id="test6" />
-                      <label for="test6">综合素质分</label>
+                      <label for="test6">VIP通道</label>
                     </p>
                      <p>
                          <input type="checkbox" id="test7" />
-                         <label for="test7">能力提升</label>
+                         <label for="test7">领导专属</label>
                      </p>
                      <p>
                          <input type="checkbox" id="test8" />
-                         <label for="test8">开拓视野</label>
+                         <label for="test8">需要专属酒店</label>
                      </p>
 
 
                    </div>
                                
                    </div>
-                        <a class="waves-effect waves-light btn-large" href="#" onclick="checkandsubmit()" style="margin-top: 10px">创建会议</a>
+                        <a class="waves-effect waves-light btn-large" href="#" onclick="checkandsubmit()" style="margin-top: 10px">确认参会</a>
                             <!-- /.row (nested) -->
                 </div>
                         <!-- /.panel-body -->

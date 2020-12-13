@@ -16,19 +16,20 @@ Date: 2018-03-05 10:41:58
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- 会议参加者的表
+-- 参会记录的表
 -- ----------------------------
-DROP TABLE IF EXISTS `conference`;
-CREATE TABLE `conference` (
+DROP TABLE IF EXISTS `participate`;
+CREATE TABLE `participate` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
-  /*会议参加者的表*/
-  `name` varchar(20) NOT NULL,
-  `datetime` datetime NOT NULL,
-  `renshu` varchar(20) NOT NULL,
-  `about` varchar(200) NOT NULL,
-  `organizername` varchar(20) NOT NULL,
-  `hotelid` int(4) NOT NULL,
-  `organizerid` int(4) NOT NULL,
+  /*参会记录的表*/
+  `conferenceId` int(4) NOT NULL,
+  `attendeeId` int(4) NOT NULL,
+  `hotelId` int(4) NOT NULL,
+  `driverId` int(4),
+  `roomId` int(4),
+  `departtime` datetime NOT NULL,
+  `returntime` datetime NOT NULL,
+  `need` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 

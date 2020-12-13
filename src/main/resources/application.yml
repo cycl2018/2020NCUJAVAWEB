@@ -26,10 +26,11 @@ spring:
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
     #创建表语句
-#    schema:
+    schema:
 #      - classpath:sql/attendee.sql
 #      - classpath:sql/organizer.sql
 #      - classpath:sql/conference.sql
+      - classpath:sql/participate.sql
 #mybatis全局配置文件的位置
 mybatis:
   config-location: classpath:mybatis/mybatisconfig.xml

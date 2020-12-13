@@ -329,8 +329,7 @@
                                             <td th:text="${conference.datetime}"></td>
                                             <td th:text="${conference.organizername}"></td>
                                             <td>
-                                                <a href="#">详细</a>
-                                                <a href="#">参加</a>
+                                                <a th:href="@{'/detail?id='+${conference.id}}">参加会议</a>
                                             </td>
                                         </tr>
 
@@ -349,37 +348,37 @@
                   <!--   Kitchen Sink -->
                     <div class="card">
                         <div class="card-action">
-                            Kitchen Sink
+                            参会工具人排行
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
+                                            <th>排名</th>
+                                            <th>参会者姓名</th>
+                                            <th>参加次数</th>
+                                            <th>联系电话</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
+                                            <td>Teapot</td>
+                                            <td>666</td>
+                                            <td>16608087863</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
+                                            <td>Teapot</td>
+                                            <td>555</td>
+                                            <td>16608087863</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
+                                            <td>Teapot</td>
+                                            <td>444</td>
+                                            <td>16608087863</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -392,38 +391,38 @@
                      <!--   Basic Table  -->
                     <div class="card">
                         <div class="card-action">
-                            Basic Table
+                            会议组织者排行
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
+                                            <th>排名</th>
+                                            <th>组织者姓名</th>
+                                            <th>组织次数</th>
+                                            <th>联系电话</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Teapot</td>
+                                        <td>666</td>
+                                        <td>16608087863</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Teapot</td>
+                                        <td>555</td>
+                                        <td>16608087863</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Teapot</td>
+                                        <td>444</td>
+                                        <td>16608087863</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -438,38 +437,38 @@
                       <!--    Striped Rows Table  -->
                     <div class="card">
                         <div class="card-action">
-                            Striped Rows Table
+                            被选最多旅馆
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
+                                            <th>排名</th>
+                                            <th>旅馆名</th>
+                                            <th>被选次数</th>
+                                            <th>联系电话</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Teapot</td>
+                                        <td>666</td>
+                                        <td>16608087863</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Teapot</td>
+                                        <td>555</td>
+                                        <td>16608087863</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Teapot</td>
+                                        <td>444</td>
+                                        <td>16608087863</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -481,7 +480,7 @@
                     <!--    Bordered Table  -->
                     <div class="card">
                         <div class="card-action">
-                            Bordered Table
+                            最忙司机
                         </div>
                         <!-- /.panel-heading -->
                         <div class="card-content">
@@ -489,30 +488,30 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
+                                            <th>排行</th>
+                                            <th>姓名</th>
+                                            <th>接送次数</th>
+                                            <th>联系电话</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
+                                            <td>Teapot</td>
+                                            <td>666</td>
+                                            <td>16608087863</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
+                                            <td>Teapot</td>
+                                            <td>555</td>
+                                            <td>16608087863</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
+                                            <td>Teapot</td>
+                                            <td>444</td>
+                                            <td>16608087863</td>
                                         </tr>
                                     </tbody>
                                 </table>

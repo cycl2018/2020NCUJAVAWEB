@@ -16,6 +16,10 @@ public interface IConferenceDao {
     //初始化的时候，添加一场比赛
     ArrayList<Conference> getallConference();
 
+    void addConference(String name, String organizername, String datetime, Integer renshu, Integer hotelid, String about, Integer organizerid);
+
+    //根据id查询会议
+    Conference getConferenceById(String id);
 }
 
 

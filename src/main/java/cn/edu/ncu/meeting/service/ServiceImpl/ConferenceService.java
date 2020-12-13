@@ -18,4 +18,15 @@ public class ConferenceService implements IConferenceService {
     public ArrayList<Conference> getallConference() {
         return conferenceDao.getallConference();
     }
+
+    //增加一条会议
+    @Override
+    public void addConference(String name, String organizername, String datetime, Integer renshu, Integer hotelid, String about, Integer organizerid) {
+        conferenceDao.addConference(name,organizername,datetime, renshu,hotelid,about,organizerid);
+    }
+
+    @Override
+    public Conference getConferenceById(String id) {
+        return conferenceDao.getConferenceById(id);
+    }
 }

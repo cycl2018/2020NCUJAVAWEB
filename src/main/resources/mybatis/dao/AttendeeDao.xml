@@ -16,6 +16,10 @@
         password=#{password}
     </select>
 
+    <insert id="register">
+        insert into attendee(username,password) values (#{username},#{password})
+    </insert>
+
 
 </mapper>
 

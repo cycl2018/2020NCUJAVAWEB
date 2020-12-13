@@ -2,19 +2,18 @@ package cn.edu.ncu.meeting.controller;
 
 
 import cn.edu.ncu.meeting.entity.Attendee;
+import cn.edu.ncu.meeting.entity.Conference;
 import cn.edu.ncu.meeting.service.ServiceImpl.AttendeeService;
+import cn.edu.ncu.meeting.service.ServiceImpl.ConferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.thymeleaf.util.StringUtils;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 
@@ -23,6 +22,7 @@ import java.util.Map;
 public class AttendeeController {
     @Autowired
     AttendeeService attendeeService;
+
 
     //这里为空或者是login都能进入该方法
     @RequestMapping({"", "login"})

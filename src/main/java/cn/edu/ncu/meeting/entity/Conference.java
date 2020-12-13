@@ -10,16 +10,17 @@ public class Conference {
     private Integer renshu;
     private Integer hotelid;
     private String about;
+    private Integer organizerid;
 
 
-    public Conference(Integer id, String name, String organizername, String datetime, Integer renshu, Integer hotelid, String about) {
-        this.id = id;
+    public Conference(String name, String organizername, String datetime, Integer renshu, Integer hotelid, String about, Integer organizerid) {
         this.name = name;
         this.organizername = organizername;
         this.datetime = datetime;
         this.renshu = renshu;
         this.hotelid = hotelid;
         this.about = about;
+        this.organizerid = organizerid;
     }
 
     public Conference() {
@@ -35,7 +36,16 @@ public class Conference {
                 ", renshu=" + renshu +
                 ", hotelid=" + hotelid +
                 ", about='" + about + '\'' +
+                ", organizerid=" + organizerid +
                 '}';
+    }
+
+    public Integer getOrganizerid() {
+        return organizerid;
+    }
+
+    public void setOrganizerid(Integer organizerid) {
+        this.organizerid = organizerid;
     }
 
     public String getOrganizername() {

@@ -10,6 +10,20 @@
         from conference
     </select>
 
+    <!-- 插入一条会议 -->
+    <insert id="addConference">
+        insert into conference(name,datetime,renshu,about,hotelid,organizername,organizerid)
+        values (#{name},#{datetime},#{renshu},#{about},#{hotelid},#{organizername},#{organizerid})
+    </insert>
+
+
+    <!-- 根据id查询会议 -->
+    <select id="getConferenceById" resultType="cn.edu.ncu.meeting.entity.Conference">
+        select
+        *
+        from conference where id=#{id}
+    </select>
+
 
 </mapper>
 
