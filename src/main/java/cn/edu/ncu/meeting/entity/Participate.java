@@ -14,7 +14,11 @@ public class Participate {
     Integer roomId;
     String departtime;
     String returntime;
+    String datetime;
     String need;
+    //两个对象
+    Attendee attendee;
+    Conference conference;
 
     public Participate(Integer conferenceId, Integer attendeeId, Integer hotelId, String departtime, String returntime, String need) {
         this.conferenceId = conferenceId;
@@ -39,8 +43,35 @@ public class Participate {
                 ", roomId=" + roomId +
                 ", departtime='" + departtime + '\'' +
                 ", returntime='" + returntime + '\'' +
+                ", datetime='" + datetime + '\'' +
                 ", need='" + need + '\'' +
+                ", attendee=" + attendee +
+                ", conference=" + conference +
                 '}';
+    }
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+
+    public Attendee getAttendee() {
+        return attendee;
+    }
+
+    public void setAttendee(Attendee attendee) {
+        this.attendee = attendee;
+    }
+
+    public Conference getConference() {
+        return conference;
+    }
+
+    public void setConference(Conference conference) {
+        this.conference = conference;
     }
 
     public Integer getId() {

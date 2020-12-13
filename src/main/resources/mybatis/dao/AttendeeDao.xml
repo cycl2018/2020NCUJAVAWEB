@@ -20,6 +20,9 @@
         insert into attendee(username,password) values (#{username},#{password})
     </insert>
 
+    <select id="findbyId" resultType="cn.edu.ncu.meeting.entity.Attendee">
+        select * from attendee where id=#{attendeeId}
+    </select>
 
 </mapper>
 

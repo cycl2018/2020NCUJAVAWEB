@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8" />
@@ -39,7 +39,7 @@
                 <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b th:text="${session.attendee.username}"></b> <i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </nav>
         <!-- Dropdown Structure -->
@@ -223,9 +223,9 @@
                     <li>
                         <a class="waves-effect waves-dark" href="/index"><i class="fa fa-dashboard"></i> 主页面</a>
                     </li>
-                    <li>
-                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> UI 元素</a>
-                    </li>
+<!--                    <li>-->
+<!--                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> UI 元素</a>-->
+<!--                    </li>-->
                     <li>
                         <a href="/chart" class="active-menu waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> 图表总览</a>
                     </li>
@@ -236,38 +236,38 @@
                     <li>
                         <a href="/table" class="waves-effect waves-dark"><i class="fa fa-table"></i> 全部会议</a>
                     </li>
-                    <li>
-                        <a href="/form" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 发起会议 </a>
-                    </li>
+<!--                    <li>-->
+<!--                        <a href="/form" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 发起会议 </a>-->
+<!--                    </li>-->
 
 
-                    <li>
-                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 目前事务<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">一号链接</a>
-                            </li>
-                            <li>
-                                <a href="#">二号链接</a>
-                            </li>
-                            <li>
-                                <a href="#">三号链接<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">三分之一</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">三分之二</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">三分之三</a>
-                                    </li>
+<!--                    <li>-->
+<!--                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 目前事务<span class="fa arrow"></span></a>-->
+<!--                        <ul class="nav nav-second-level">-->
+<!--                            <li>-->
+<!--                                <a href="#">一号链接</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#">二号链接</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#">三号链接<span class="fa arrow"></span></a>-->
+<!--                                <ul class="nav nav-third-level">-->
+<!--                                    <li>-->
+<!--                                        <a href="#">三分之一</a>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <a href="#">三分之二</a>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <a href="#">三分之三</a>-->
+<!--                                    </li>-->
 
-                                </ul>
+<!--                                </ul>-->
 
-                            </li>
-                        </ul>
-                    </li>
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
                     <li>
                         <a href="/agenda" class="waves-effect waves-dark"><i class="fa fa-fw fa-file"></i> 日程总览</a>
                     </li>

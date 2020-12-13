@@ -80,7 +80,7 @@ public class ConferenceController {
 
         //插入一条记录
         participateService.addParticipate(need,departtime,returntime,a,c);
-        return "redirect:/table";
+        return "redirect:/agenda";
     }
 
 

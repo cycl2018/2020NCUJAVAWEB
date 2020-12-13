@@ -29,6 +29,8 @@ CREATE TABLE `participate` (
   `roomId` int(4),
   `departtime` datetime NOT NULL,
   `returntime` datetime NOT NULL,
+  /*会议的开始时间*/
+  `datetime` datetime NOT NULL,
   `need` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

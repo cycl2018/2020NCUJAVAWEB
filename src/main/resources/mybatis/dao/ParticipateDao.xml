@@ -5,9 +5,15 @@
 
 
     <insert id="addParticipate">
-        insert into participate(need,departtime,returntime,attendeeid,conferenceid,hotelid)
-        values (#{need},#{departtime},#{returntime},#{attendeeId},#{conferenceId},#{hotelId})
+        insert into participate(need,departtime,returntime,attendeeid,conferenceid,hotelid,datetime)
+        values (#{need},#{departtime},#{returntime},#{attendeeId},#{conferenceId},#{hotelId},#{datetime})
     </insert>
+
+
+    <!-- 级联查询，查询参会记录的同时查询参与者和会议信息 -->
+    <select id="getByattendeeId" resultType="cn.edu.ncu.meeting.entity.Participate">
+        select * from participate where attendeeId = #{attendeeid}
+    </select>
 
 
 </mapper>

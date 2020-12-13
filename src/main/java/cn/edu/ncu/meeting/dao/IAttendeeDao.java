@@ -16,6 +16,9 @@ public interface IAttendeeDao {
     Attendee findbyu_p(@Param("username") String username, @Param("password") String password);
 
     void register(String username, String password);
+
+    //根据ID查询用户
+    Attendee findbyId(Integer attendeeId);
 }
 
 

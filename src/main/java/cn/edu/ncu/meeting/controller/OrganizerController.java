@@ -35,14 +35,19 @@ public class OrganizerController {
         Organizer o = organizerService.findOrganizerByu_p(name,password);
         if (o != null){
             session.setAttribute("organizer",o);
-            return "index";
+            //跳到组织者的主页面
+            return "index_organizer";
         }else{
             return "organizer_login";
         }
     }
 
 
-
+    //这里为空或者是login都能进入该方法
+    @RequestMapping("/index_organizer")
+    public String index_organizer() {
+        return "index_organizer";
+    }
 
 
 
