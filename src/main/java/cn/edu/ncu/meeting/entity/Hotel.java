@@ -1,11 +1,16 @@
 package cn.edu.ncu.meeting.entity;
 
+/**
+ * @author 赖澄宇
+ *
+ */
 public class Hotel {
+
     private int id;
     private String name;
     private String address;
     private int maxRoomName;
-    private int usedRoomNUm;
+    private int usedRoomNum;
 
     public int getId() {
         return id;
@@ -39,11 +44,11 @@ public class Hotel {
         this.maxRoomName = maxRoomName;
     }
 
-    public int getUsedRoomNUm() {
-        return usedRoomNUm;
+    public int getUsedRoomNum() {
+        return usedRoomNum;
     }
 
-    public void setUsedRoomNUm(int usedRoomNUm) {
-        this.usedRoomNUm = usedRoomNUm;
+    public void setUsedRoomNum(int usedRoomNum) {
+        this.usedRoomNum = usedRoomNum;
     }
 }
