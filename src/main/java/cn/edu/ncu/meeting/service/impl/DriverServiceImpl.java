@@ -29,4 +29,9 @@ public class DriverServiceImpl implements DriverService {
         return driverDao.findDriverByGrade(driverGrade);
     }
 
+    @Override
+    public void addDriver(String driverName, int driverGrade) {
+        driverDao.addDriver(driverName,driverGrade);
+    }
+
 }

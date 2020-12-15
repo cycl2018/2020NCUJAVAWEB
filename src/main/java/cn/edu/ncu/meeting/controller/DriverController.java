@@ -17,16 +17,23 @@ import java.util.List;
  *
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/driver")
 public class DriverController {
     @Resource(name = "driverServiceImpl")
     private DriverService driverService;
-    @RequestMapping(value = "/driver.name", method = RequestMethod.POST)
+    @RequestMapping(value = "/name", method = RequestMethod.POST)
     public List<Driver> findOneDriver(@RequestParam(value = "driverName") String driverName){
         return driverService.findDriverByName(driverName);
     }
-    @RequestMapping(value = "/driver.grade", method = RequestMethod.POST)
+    @RequestMapping(value = "/grade", method = RequestMethod.POST)
     public List<Driver> findDriverByGrade(@RequestParam(value = "driverGrade") String driverGrade){
         return driverService.findDriverByGrade(driverGrade);
+    }
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public void addDriver(@RequestParam(value = "driverName") String driverName,
+                          @RequestParam(value = "driverGrade") int driverGrade){
+        System.out.println(driverName);
+        System.out.println(driverGrade);
+        driverService.addDriver(driverName,driverGrade);
     }
 }

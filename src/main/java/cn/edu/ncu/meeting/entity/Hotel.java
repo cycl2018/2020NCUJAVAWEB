@@ -2,15 +2,15 @@ package cn.edu.ncu.meeting.entity;
 
 /**
  * @author 赖澄宇
- *
+ *酒店实体
  */
 public class Hotel {
 
     private int id;
     private String name;
     private String address;
-    private int maxRoomName;
-    private int usedRoomNum;
+    private String tel;
+    private int grade;
 
     public int getId() {
         return id;
@@ -36,19 +36,19 @@ public class Hotel {
         this.address = address;
     }
 
-    public int getMaxRoomName() {
-        return maxRoomName;
+    public String getTel() {
+        return tel;
     }
 
-    public void setMaxRoomName(int maxRoomName) {
-        this.maxRoomName = maxRoomName;
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
-    public int getUsedRoomNum() {
-        return usedRoomNum;
+    public int getGrade() {
+        return grade;
     }
 
-    public void setUsedRoomNum(int usedRoomNum) {
-        this.usedRoomNum = usedRoomNum;
+    public void setGrade(int grade) {
+        this.grade = grade;
     }
 }

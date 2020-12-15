@@ -11,10 +11,23 @@ import java.util.List;
 
 public interface DriverService {
     /**
-     *
-     * @param driverName
+     *通过名字查找司机
+     * @param driverName Sting
      * @return Driver对象列表
      */
     List<Driver> findDriverByName(String driverName);
+
+    /**
+     * 通过等级查找司机
+     * @param driverGrade String
+     * @return Driver List
+     */
     List<Driver> findDriverByGrade(String driverGrade);
+
+    /**
+     * 增加司机信息
+     * @param name 名字 String
+     * @param grade 等级 int
+     */
+    void addDriver(String name,int grade);
 }
