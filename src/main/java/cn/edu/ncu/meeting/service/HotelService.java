@@ -1,7 +1,9 @@
 package cn.edu.ncu.meeting.service;
 
 import cn.edu.ncu.meeting.entity.Hotel;
+import cn.edu.ncu.meeting.entity.HotelOrder;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -29,4 +31,30 @@ public interface HotelService {
      * @return Hotel List
      */
     List<Hotel> findHotelById(int hotelId);
+
+    /**
+     * 参会者向就酒店发送订单
+     * @param hotelId 酒店id
+     * @param attendeeId 参会者id
+     * @param attendeeTel 参会者电话
+     */
+    void seedHotelOrder(int hotelId,int attendeeId,String attendeeTel);
+    /**
+     * 酒店确认订单
+     * @param orderId 订单编号
+     */
+    void confirmHotelOrder(int orderId);
+
+    /**
+     * 完成订单
+     * @param orderId 订单编号
+     */
+    void finishHotelOrder(int orderId);
+
+    /**
+     * 通过酒店id查找订单
+     * @param hotelId 酒店id
+     * @return 查找到的订单
+     */
+    List<HotelOrder> findHotelOrder(int hotelId);
 }

@@ -3,4 +3,4 @@ spring:
     url: jdbc:mysql://120.48.2.40:3306/kuaiwu?serverTimezone=UTC
     username: root
     password: teapot0033
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver

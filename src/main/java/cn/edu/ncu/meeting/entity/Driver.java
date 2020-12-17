@@ -6,8 +6,7 @@ package cn.edu.ncu.meeting.entity;
 public class Driver {
     private int id;
     private String name;
-    private int grade;
-    private boolean used;
+    private String password;
 
     public int getId() {
         return id;
@@ -25,19 +24,11 @@ public class Driver {
         this.name = name;
     }
 
-    public int getGrade() {
-        return grade;
+    public String getPassword() {
+        return password;
     }
 
-    public void setGrade(int grade) {
-        this.grade = grade;
-    }
-
-    public boolean isUsed() {
-        return used;
-    }
-
-    public void setUsed(boolean used) {
-        this.used = used;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

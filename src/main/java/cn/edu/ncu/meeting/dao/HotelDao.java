@@ -1,8 +1,10 @@
 package cn.edu.ncu.meeting.dao;
 
 import cn.edu.ncu.meeting.entity.Hotel;
+import cn.edu.ncu.meeting.entity.HotelOrder;
 import org.apache.ibatis.annotations.*;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -50,4 +52,42 @@ public interface HotelDao {
     })
     @Select("SELECT * FROM hotel WHERE id = #{hotelId}")
     List<Hotel> findHotelById(@Param("hotelId") int hotelId);
+
+    /**
+     * 参会者向就酒店发送订单
+     * @param hotelId 酒店id
+     * @param orderTime 预定订单时间
+     * @param attendeeId 参会者id
+     * @param attendeeTel 参会者电话
+     */
+    @Insert("INSERT INTO hotelOrder (hotelId,orderTime,attendeeId,attendeeTel)" +
+            "VALUE(#{hotelId},#{orderTime},#{attendeeId},#{attendeeTel})")
+    void seedHotelOrder(int hotelId, Timestamp orderTime,
+                        int attendeeId,String attendeeTel);
+
+    /**
+     * 酒店确认订单
+     * @param orderId 订单编号
+     * @param startTime 确认时间/开始居住时间
+     */
+    @Update("UPDATE hotelOrder SET confirm = 1, startTime = #{startTime}" +
+            "WHERE id = #{orderId}")
+    void confirmHotelOrder(int orderId,Timestamp startTime);
+
+    /**
+     * 完成订单
+     * @param orderId 订单编号
+     * @param endTime 结束时间
+     */
+    @Update("UPDATE hotelOrder SET finish = 1, endTime = #{endTime}" +
+            "WHERE id = #{orderId}")
+    void finishHotelOrder(int orderId,Timestamp endTime);
+
+    /**
+     * 通过酒店id查找订单
+     * @param hotelId 酒店id
+     * @return 查找到的订单
+     */
+    @Select("SELECT * FROM hotelOrder WHERE hotelId = #{hotelId}")
+    List<HotelOrder> findHotelOrder(int hotelId);
 }

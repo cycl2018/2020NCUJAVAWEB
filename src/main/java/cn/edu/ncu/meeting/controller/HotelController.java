@@ -1,6 +1,7 @@
 package cn.edu.ncu.meeting.controller;
 
 import cn.edu.ncu.meeting.entity.Hotel;
+import cn.edu.ncu.meeting.entity.HotelOrder;
 import cn.edu.ncu.meeting.service.HotelService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,5 +40,29 @@ public class HotelController {
     @RequestMapping(value = "/findById",method = RequestMethod.POST)
     List<Hotel> findHotelById(@RequestParam(value = "id") int id){
         return hotelService.findHotelById(id);
+    }
+
+    @RequestMapping(value = "/seedHotelOrder",method = RequestMethod.POST)
+    public void seedHotelOrder(int hotelId, int attendeeId, String attendeeTel){
+        System.out.println(hotelId);
+        System.out.println(attendeeId);
+        System.out.println(attendeeTel);
+        hotelService.seedHotelOrder(hotelId,attendeeId,attendeeTel);
+    }
+
+    @RequestMapping(value = "/confirmHotelOrder",method = RequestMethod.POST)
+    public void confirmHotelOrder(int orderId){
+        hotelService.confirmHotelOrder(orderId);
+    }
+
+    @RequestMapping(value = "/finishHotelOrder",method = RequestMethod.POST)
+    public void finishHotelOrder(int orderId){
+        System.out.println(orderId);
+        hotelService.finishHotelOrder(orderId);
+    }
+
+    @RequestMapping(value = "/findHotelOrder",method = RequestMethod.POST)
+    public List<HotelOrder> findHotelOrder(int hotelId) {
+        return hotelService.findHotelOrder(hotelId);
     }
 }
