@@ -28,6 +28,11 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
+    public List<Driver> findDriverByName(String name) {
+        return driverDao.findDriverByName(name);
+    }
+
+    @Override
     public void addDriver(String name, String password) {
         driverDao.addDriver(name,password);
     }

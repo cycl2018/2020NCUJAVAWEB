@@ -18,6 +18,8 @@ public interface DriverService {
      * @return Driver List
      */
     List<Driver> findDriver(int driverId);
+
+    List<Driver> findDriverByName(String name);
     /**
      * 插入司机信息
      * @param name 名字
