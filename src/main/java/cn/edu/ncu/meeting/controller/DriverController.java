@@ -108,6 +108,7 @@ public class DriverController {
         driverService.findDriver(id);
     }
     @RequestMapping(value = "/getFreeDriverOrder",method = RequestMethod.POST)
+    @ResponseBody
     List<DriverOrder> getFreeDriverOrder(){
         return driverService.getFreeDriverOrder();
     }
