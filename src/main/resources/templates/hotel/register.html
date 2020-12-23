@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  class="x-admin-sm">
+<head>
+    <meta charset="UTF-8">
+    <title>酒店管理登录</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" th:href="@{/hotel/css/font.css}">
+    <link rel="stylesheet" th:href="@{/hotel/css/login.css}">
+    <link rel="stylesheet" th:href="@{/hotel/css/xadmin.css}">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script th:src="@{/hotel/lib/layui/layui.js}" charset="utf-8"></script>
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="login-bg">
+
+<div class="login layui-anim layui-anim-up">
+    <div class="message">酒店账号注册</div>
+    <div class="layui-form"  >
+        <input id = "UserName"  placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+        <input id = "password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+        <input id = "passwordTwo"  lay-verify="required" placeholder="确认密码"  type="password" class="layui-input">
+        <input id = "name"  placeholder="酒店名"  type="text" lay-verify="required" class="layui-input" >
+        <input id = "address"  placeholder="地址"  type="text" lay-verify="required" class="layui-input" >
+        <input id = "tel"  placeholder="电话"  type="text" lay-verify="required" class="layui-input" >
+        <input id = "grade"  placeholder="酒店等级，1：五星级，2：四星级，3：三星级"  type="text" lay-verify="required" class="layui-input" >
+        <input value="注册"  style="width:100%;" type="button" onclick="register()">
+    </div>
+</div>
+<script>
+    function register() {
+        var UserName = $("#UserName").val();
+        var password1 = $("#password").val();
+        var password2 = $("#passwordTwo").val();
+        var name = $("#name").val();
+        var address = $("#address").val();
+        var tel = $("#tel").val();
+        var grade = $("#grade").val();
+        var flag = 1;
+        if(UserName == null || UserName=="" || password1==null || password1 =="" ||
+            password2==null || password2=="" || name==null || name =="" || address==null
+            || address=="" || tel==null || tel=="" || grade==null || grade==""){
+            alert("所有选项均不能为空");
+        }else
+        if (password1 !== password2){
+            alert("两次密码不一致！")
+            flag = 0;
+        }else if(!(grade == 1 || grade == 2 || grade==3)){
+            alert("酒店等级有误")
+            flag = 0;
+        }
+        <!--    String name,String address,String tel,int grade,-->
+        <!--    String hotelUserName,String password-->
+        if (flag == 1){
+            $.post("/hotel/add",
+                {name:name,address:address,tel:tel,grade:grade,hotelUserName:UserName,password:password1},
+
+                function (res) {
+                if (res === true){
+                    alert("注册成功");
+                    window.location.href ="http://localhost:8080/hotel/index";
+                } else {
+                    alert("注册失败，用户名已被使用");
+                }
+            })
+        }
+    }
+</script>
+<!-- 底部结束 -->
+</body>
+</html>
