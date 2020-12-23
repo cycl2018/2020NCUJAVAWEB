@@ -24,6 +24,10 @@
         from conference where id=#{id}
     </select>
 
+    <delete id="deleteById">
+        delete from conference where id=#{id}
+    </delete>
+
 
 </mapper>
 

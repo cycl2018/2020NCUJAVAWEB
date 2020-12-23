@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>发起会议</title>
+    <title></title>
 	
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="asserts/materialize/css/materialize.min.css" media="screen,projection" />
@@ -18,52 +18,7 @@
     <link href="asserts/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="asserts/js/Lightweight-Chart/cssCharts.css">
-
-    <script type="text/javascript">
-        function checkrenshu() {
-            //判断人数是否符合格式
-            var reg = new RegExp('^\\d{1,4}$')
-            renshu = document.getElementById("renshu").value;
-            if(reg.test(renshu)){
-                return true;
-            }else{
-                alert("会议人数请输入1-4位数字")
-                return false;
-            }
-        }
-        function checkhotel() {
-            //判断旅馆号是否符合格式
-            var reg = new RegExp('^\\d{1,4}$')
-            hotelid = document.getElementById("hotelid").value;
-            if(reg.test(hotelid)){
-                return true;
-            }else{
-                alert("旅馆编号请输入1-4位数字")
-                return false;
-            }
-        }
-        function checknull() {
-            about = document.getElementById("about").value;
-            name_ = document.getElementById("name").value;
-            date_ = document.getElementById("datetime").value;
-            if(name_ =="" || about=="" || date_==""){
-                alert("必填字段不能为空")
-                return false;
-            }else {
-                return true;
-            }
-        }
-        function checkandsubmit() {
-            //验证是否都符合要求
-            if( checkhotel() && checkrenshu() && checknull()){
-                //全部符合要求
-                document.getElementById("meeting").submit();
-            }else{
-
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="asserts/js/Lightweight-Chart/cssCharts.css"> 
 </head>
 <body>
     <div id="wrapper">
@@ -84,7 +39,7 @@
                 <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b th:text="${session.organizer.username}"></b> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b th:text="${session.manager.username}"></b> <i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </nav>
         <!-- Dropdown Structure -->
@@ -266,56 +221,18 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="waves-effect waves-dark" href="/index_organizer"><i class="fa fa-dashboard"></i> 主页面</a>
+                        <a class="waves-effect waves-dark" href="/indexmanager"><i class="fa fa-dashboard"></i> 主页面</a>
                     </li>
-<!--                    <li>-->
-<!--                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> UI 元素</a>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a href="/chart" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> 图表总览</a>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a href="/message" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> 消息中心</a>-->
-<!--                    </li>-->
-
-<!--                    <li>-->
-<!--                        <a href="/table" class="waves-effect waves-dark"><i class="fa fa-table"></i> 全部会议</a>-->
-<!--                    </li>-->
                     <li>
-                        <a href="/form" class="active-menu waves-effect waves-dark"><i class="fa fa-edit"></i> 发起会议 </a>
+                        <a href="/chartmanager" class="active-menu waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> 图表总览</a>
+                    </li>
+                    <li>
+                        <a href="/messagemanager" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> 消息中心</a>
                     </li>
 
-
-<!--                    <li>-->
-<!--                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 目前事务<span class="fa arrow"></span></a>-->
-<!--                        <ul class="nav nav-second-level">-->
-<!--                            <li>-->
-<!--                                <a href="#">一号链接</a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a href="#">二号链接</a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a href="#">三号链接<span class="fa arrow"></span></a>-->
-<!--                                <ul class="nav nav-third-level">-->
-<!--                                    <li>-->
-<!--                                        <a href="#">三分之一</a>-->
-<!--                                    </li>-->
-<!--                                    <li>-->
-<!--                                        <a href="#">三分之二</a>-->
-<!--                                    </li>-->
-<!--                                    <li>-->
-<!--                                        <a href="#">三分之三</a>-->
-<!--                                    </li>-->
-
-<!--                                </ul>-->
-
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a href="/agenda" class="waves-effect waves-dark"><i class="fa fa-fw fa-file"></i> 日程总览</a>-->
-<!--                    </li>-->
+                    <li>
+                        <a href="/tablemanager" class="waves-effect waves-dark"><i class="fa fa-table"></i> 全部会议</a>
+                    </li>
                 </ul>
 
             </div>
@@ -329,178 +246,79 @@
 
 
 
-        <div id="page-wrapper" >
-<form class="col s12" id="meeting" action="/addconference" method="post">
+
+
+
+
+
+        <div id="page-wrapper">
 		  <div class="header"> 
                         <h1 class="page-header">
-                             发起会议
+                             Charts 
                         </h1>
 						<ol class="breadcrumb">
 					  <li><a href="#">Home</a></li>
-					  <li><a href="#">发起会议</a></li>
+					  <li><a href="#">Charts</a></li>
 					  <li class="active">Data</li>
 					</ol> 
 									
 		</div>
-
             <div id="page-inner"> 
-			 <div class="row">
-			 <div class="col-lg-12">
-			 <div class="card">
-                    <div class="card-action">
-                        会议基本信息（必填）
-                    </div>
-                    <div class="card-content">
-
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="name" name="name" type="text" class="validate">
-              <label for="name">会议名</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="datetime" name="datetime" type="datetime-local" class="validate">
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-                <input id="about" name="about" type="text" class="validate">
-                <label for="about">会议描述</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="renshu" name="renshu" type="text" class="validate">
-              <label for="renshu">参会人数</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="hotelid" name="hotelid" type="text" class="validate">
-              <label for="hotelid">旅馆号</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              这是一个空闲字段
-              <div class="input-field inline">
-                <input id="empty" name="empty" type="text" class="validate">
-                <label for="empty" data-error="wrong" data-success="right">空闲字段</label>
-              </div>
-            </div>
-          </div>
-        <div class="clearBoth"></div>
-
-
-  </div>
-    </div>
- </div>	
-	 </div>		
-              <div class="row">
-                <div class="col-lg-6">
+             
+                <div class="row"> 
+                    
+                      
+                               <div class="col-md-6 col-sm-12 col-xs-12">                     
                     <div class="card">
                         <div class="card-action">
-                            会议二号联系人（选填）
+                            Bar Chart
                         </div>
                         <div class="card-content">
-								  <div class="row">
-									<div class="input-field col s6">
-									  <i class="material-icons prefix">account_circle</i>
-									  <input id="icon_prefix" type="text" class="validate">
-									  <label for="icon_prefix">姓名</label>
-									</div>
-									<div class="input-field col s6">
-									  <i class="material-icons prefix">phone</i>
-									  <input id="icon_telephone" type="tel" class="validate">
-									  <label for="icon_telephone">电话号码</label>
-									</div>
-								  </div>
-								  <div class="row">
-									<div class="input-field col s12">
-									  <input id="email" type="email" class="validate">
-									  <label for="email" data-error="wrong" data-success="right">邮箱地址</label>
-									</div>
-								  </div>
-                                  <div class="row">
-                                    <div class="input-field col s12">
-                                      <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                      <label for="textarea1">住址</label>
-                                    </div>
-                                  </div>
-
-                           <!-- Switch -->
-                          <div class="switch">
-                            <label>
-                              关闭消息提示
-                              <input type="checkbox">
-                              <span class="lever"></span>
-                              开启消息提示
-                            </label>
-                          </div>
-                          <div class="switch">
-                            <label>
-                              开放搜索
-                              <input type="checkbox">
-                              <span class="lever"></span>
-                                屏蔽搜索
-                            </label>
-                          </div>
-
-
-
-							<div class="clearBoth"></div>
-							</div>
-							</div>
-							</div>
-
-				<div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-action">
-                            会议内容方向（选填）
+                            <div id="morris-bar-chart"></div>
                         </div>
-                        <div class="card-content">
-
-                    <p>
-                      <input name="group1" type="radio" id="test1" />
-                      <label for="test1">科普</label>
-                    </p>
-                    <p>
-                      <input name="group1" type="radio" id="test2" />
-                      <label for="test2">规划</label>
-                    </p>
-                    <p>
-                      <input class="with-gap" name="group1" type="radio" id="test3"  />
-                      <label for="test3">宣讲</label>
-                    </p>
-                    <p>
-                      <input type="checkbox" id="test5" />
-                      <label for="test5">第二课堂学分</label>
-                    </p>
-                    <p>
-                      <input type="checkbox" id="test6" />
-                      <label for="test6">综合素质分</label>
-                    </p>
-                     <p>
-                         <input type="checkbox" id="test7" />
-                         <label for="test7">能力提升</label>
-                     </p>
-                     <p>
-                         <input type="checkbox" id="test8" />
-                         <label for="test8">开拓视野</label>
-                     </p>
-
-
-                   </div>
-                               
-                   </div>
-                        <a class="waves-effect waves-light btn-large" href="#" onclick="checkandsubmit()" style="margin-top: 10px">创建会议</a>
-                            <!-- /.row (nested) -->
+                    </div>            
                 </div>
-                        <!-- /.panel-body -->
-                    </div> 
-                <!-- /.col-lg-12 -->
-			</div>
+                      <div class="col-md-6 col-sm-12 col-xs-12">                     
+                    <div class="card">
+                        <div class="card-action">
+                            Area Chart
+                        </div>
+                        <div class="card-content">
+                            <div id="morris-area-chart"></div>
+                        </div>
+                    </div>            
+                </div> 
+                
+           </div>
+                 <!-- /. ROW  -->
+                <div class="row">                     
+                      
+                               <div class="col-md-6 col-sm-12 col-xs-12">                     
+                    <div class="card">
+                        <div class="card-action">
+                            Line Chart
+                        </div>
+                        <div class="card-content">
+                            <div id="morris-line-chart"></div>
+                        </div>
+                    </div>            
+                </div>
+                      <div class="col-md-6 col-sm-12 col-xs-12">                     
+                    <div class="card">
+                        <div class="card-action">
+                            Donut Chart
+                        </div>
+                        <div class="card-content">                            
+							<div id="morris-donut-chart"></div>
+                        </div>
+                    </div>            
+                </div> 
+                
+           </div>
+                 <!-- /. ROW  -->
+				 <footer><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p></footer>
+				</div>
              <!-- /. PAGE INNER  -->
-</form>
             </div>
          <!-- /. PAGE WRAPPER  -->
         </div>

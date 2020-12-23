@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+
 @Mapper
 @Repository
 public interface IOrganizerDao {
@@ -14,6 +16,8 @@ public interface IOrganizerDao {
     Organizer findOrganizerByu_p(@Param("name") String name, @Param("password") String password);
 
     void register(String username, String password);
+
+    ArrayList<Organizer> getallOrganizer();
 }
 
 

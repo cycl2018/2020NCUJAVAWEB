@@ -29,11 +29,17 @@ public class AttendeeController {
     public String login() {
         return "attendee_login.html";
     }
+    //这里为空或者是login都能进入该方法
+    @RequestMapping("loginfail")
+    public String loginfail() {
+        return "login_fail.html";
+    }
     //主界面的映射
     @RequestMapping( value = "/index")
     public String index() {
         return "index.html";
     }
+
 
 
 
@@ -56,6 +62,26 @@ public class AttendeeController {
             return "attendee_login.html";
         }
     }
+
+    //注销接口
+    @GetMapping(value = "/logout")
+    public String login(HttpSession session){
+        session.invalidate();
+        return "attendee_login.html";
+    }
+
+    //这里为空或者是login都能进入该方法
+    @RequestMapping( value = "/chart")
+    public String chart() {
+        return "chart.html";
+    }
+
+    //这里为空或者是login都能进入该方法
+    @RequestMapping( value = "/message")
+    public String message() {
+        return "message.html";
+    }
+
 
 
 }

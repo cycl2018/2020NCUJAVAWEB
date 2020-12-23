@@ -6,6 +6,8 @@ import cn.edu.ncu.meeting.service.Iservice.IOrganizerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class OrganizerService implements IOrganizerService {
     @Autowired
@@ -21,5 +23,11 @@ public class OrganizerService implements IOrganizerService {
     @Override
     public void register(String username, String password) {
         organizerDao.register(username,password);
+    }
+
+    //查询所有组织者
+    @Override
+    public ArrayList<Organizer> getallOrganizer() {
+        return organizerDao.getallOrganizer();
     }
 }

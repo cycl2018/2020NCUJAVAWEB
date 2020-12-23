@@ -1,6 +1,7 @@
 package cn.edu.ncu.meeting.config;
 
 import cn.edu.ncu.meeting.component.AttendeeInterceptor;
+import cn.edu.ncu.meeting.component.ManagerInterceptor;
 import cn.edu.ncu.meeting.component.OrganizerInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +30,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
                 //静态资源已经做好了映射，不需要再设置
                 registry.addInterceptor(new AttendeeInterceptor()).addPathPatterns("/agenda","/index","/chart","/detail","/message","/table");
                 registry.addInterceptor(new OrganizerInterceptor()).addPathPatterns("/index_organizer","/form","/addconference");
+                registry.addInterceptor(new ManagerInterceptor()).addPathPatterns("/detail_delete","/deletesubmit","/chartmanager","/indexmanager","/messagemanager","/tablemanager");
             }
         };
         return adapter;

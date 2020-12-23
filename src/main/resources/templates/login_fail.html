@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>登录失败</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 该js 不需要引用，当该页面中所有的内容执行完后自动执行
+    onload=function(){
+        setInterval(go, 1000);
+        //js 中时间以毫秒计时
+    };
+    var x=3; //利用了全局变量来执行
+    function go(){
+        x--;
+        if(x>0){
+            document.getElementById("sp").innerHTML=x+"秒后跳转页面！！！";  //每次设置的x的值都不一样了,兵现实这段话。
+        }else{
+            location.href='/';
+        }
+    }
+</script>
+<div align="center">
+    <h1>南昌大学提醒您，登录不规范，亲人两行泪~</h1><br>
+    <img style="width: 640px;height: 500px" src="/img/laopo.jpg"/><br/>
+    <span id="sp"> 3秒后跳转页面！！！</span><br/>
+    <a href="/">若没有跳转，请点击此处！！！</a>
+</div>
+</body>
+</html>

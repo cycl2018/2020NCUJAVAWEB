@@ -7,18 +7,18 @@
     <title>会务主页</title>
 	
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="asserts/materialize/css/materialize.min.css" media="screen,projection" />
+	<link rel="stylesheet" href="../../static/asserts/materialize/css/materialize.min.css" media="screen,projection" />
     <!-- Bootstrap Styles-->
-    <link href="asserts/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../static/asserts/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
-    <link href="asserts/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../static/asserts/css/font-awesome.css" rel="stylesheet" />
     <!-- Morris Chart Styles-->
-    <link href="asserts/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="../../static/asserts/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
     <!-- Custom Styles-->
-    <link href="asserts/css/custom-styles.css" rel="stylesheet" />
+    <link href="../../static/asserts/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="asserts/js/Lightweight-Chart/cssCharts.css"> 
+    <link rel="stylesheet" href="../../static/asserts/js/Lightweight-Chart/cssCharts.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand waves-effect waves-dark" href="index.html"><i class="large material-icons">insert_chart</i> <strong>会务系统</strong></a>
+                <a class="navbar-brand waves-effect waves-dark" href="../index.html"><i class="large material-icons">insert_chart</i> <strong>会务系统</strong></a>
 				
 		<div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
             </div>
@@ -40,7 +40,7 @@
 				<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>				
 				<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
 				<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
-				  <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b th:text="${session.attendee.username}"></b> <i class="material-icons right">arrow_drop_down</i></a></li>
+				  <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b th:text="${session.manager.username}"></b> <i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </nav>
 		<!-- Dropdown Structure -->
@@ -222,55 +222,17 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="active-menu waves-effect waves-dark" href="/index"><i class="fa fa-dashboard"></i> 主页面</a>
+                        <a class="active-menu waves-effect waves-dark" href="/indexmanager"><i class="fa fa-dashboard"></i> 主页面</a>
                     </li>
-<!--                    <li>-->
-<!--                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> UI 元素</a>-->
-<!--                    </li>-->
 					<li>
-                        <a href="/chart" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> 图表总览</a>
+                        <a href="/chartmanager" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> 图表总览</a>
                     </li>
                     <li>
-                        <a href="/message" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> 消息中心</a>
+                        <a href="/messagemanager" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> 消息中心</a>
                     </li>
                     
                     <li>
-                        <a href="/table" class="waves-effect waves-dark"><i class="fa fa-table"></i> 全部会议</a>
-                    </li>
-<!--                    <li>-->
-<!--                        <a href="/form" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 发起会议 </a>-->
-<!--                    </li>-->
-
-
-<!--                    <li>-->
-<!--                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 目前事务<span class="fa arrow"></span></a>-->
-<!--                        <ul class="nav nav-second-level">-->
-<!--                            <li>-->
-<!--                                <a href="#">一号链接</a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a href="#">二号链接</a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a href="#">三号链接<span class="fa arrow"></span></a>-->
-<!--                                <ul class="nav nav-third-level">-->
-<!--                                    <li>-->
-<!--                                        <a href="#">三分之一</a>-->
-<!--                                    </li>-->
-<!--                                    <li>-->
-<!--                                        <a href="#">三分之二</a>-->
-<!--                                    </li>-->
-<!--                                    <li>-->
-<!--                                        <a href="#">三分之三</a>-->
-<!--                                    </li>-->
-
-<!--                                </ul>-->
-
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </li>-->
-                    <li>
-                        <a href="/agenda" class="waves-effect waves-dark"><i class="fa fa-fw fa-file"></i> 日程总览</a>
+                        <a href="/tablemanager" class="waves-effect waves-dark"><i class="fa fa-table"></i> 全部会议</a>
                     </li>
                 </ul>
 
@@ -408,22 +370,22 @@
 						 <div id="morris-line-chart"></div>
 						</div> 
 						<div class="card-action">
-						  <b>Line Chart</b>
+						  <b>近期会议频率</b>
 						</div>
 						</div>
 		  
-					</div>		
+				</div>
 					
-						<div class="col-md-7"> 
+				<div class="col-md-7">
 					<div class="card">
 					<div class="card-image">
 					  <div id="morris-bar-chart"></div>
-					</div> 
+					</div>
 					<div class="card-action">
-					  <b> Bar Chart Example</b>
+					  <b>年度会议总数</b>
 					</div>
-					</div>					
 					</div>
+				</div>
 					
 				</div> 
 			 
@@ -436,7 +398,7 @@
 					  <div id="morris-area-chart"></div>
 					</div> 
 					<div class="card-action">
-					  <b>Area Chart</b>
+					  <b>区域图</b>
 					</div>
 					</div>	 
                     </div>
@@ -446,7 +408,7 @@
 					  <div id="morris-donut-chart"></div>
 					</div> 
 					<div class="card-action">
-					  <b>Donut Chart Example</b>
+					  <b>会议比例</b>
 					</div>
 					</div>	 
                     </div>
@@ -466,14 +428,14 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-12 col-xs-12">
 						<div class="card"><div class="card-action">
-					  <b>Tasks Panel</b>
+					  <b>事务栏</b>
 					</div>
 					<div class="card-image">
 					  <div class="collection">
-						  <a href="#!" class="collection-item">Red<span class="new badge red" data-badge-caption="red">4</span></a>
-						  <a href="#!" class="collection-item">Blue<span class="new badge blue" data-badge-caption="blue">4</span></a>
-						  <a href="#!" class="collection-item"><span class="badge">1</span>Alan</a>
-							<a href="#!" class="collection-item"><span class="new badge">4</span>Alan</a>
+						  <a href="#!" class="collection-item">红色事务<span class="new badge red" data-badge-caption="red">4</span></a>
+						  <a href="#!" class="collection-item">蓝色事务<span class="new badge blue" data-badge-caption="blue">4</span></a>
+						  <a href="#!" class="collection-item"><span class="badge">1</span>Teapot</a>
+							<a href="#!" class="collection-item"><span class="new badge">4</span>Fireworks</a>
 							<a href="#!" class="collection-item">Alan<span class="new badge blue" data-badge-caption="blue">4</span></a>
 							<a href="#!" class="collection-item"><span class="badge">14</span>Alan</a>
 							   <a href="#!" class="collection-item">Custom Badge Captions<span class="new badge" data-badge-caption="custom caption">4</span></a>
@@ -556,27 +518,27 @@
     <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
-    <script src="asserts/js/jquery-1.10.2.js"></script>
+    <script src="../../static/asserts/js/jquery-1.10.2.js"></script>
 	
 	<!-- Bootstrap Js -->
-    <script src="asserts/js/bootstrap.min.js"></script>
+    <script src="../../static/asserts/js/bootstrap.min.js"></script>
 	
-	<script src="asserts/materialize/js/materialize.min.js"></script>
+	<script src="../../static/asserts/materialize/js/materialize.min.js"></script>
 	
     <!-- Metis Menu Js -->
-    <script src="asserts/js/jquery.metisMenu.js"></script>
+    <script src="../../static/asserts/js/jquery.metisMenu.js"></script>
     <!-- Morris Chart Js -->
-    <script src="asserts/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="asserts/js/morris/morris.js"></script>
+    <script src="../../static/asserts/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="../../static/asserts/js/morris/morris.js"></script>
 	
 	
-	<script src="asserts/js/easypiechart.js"></script>
-	<script src="asserts/js/easypiechart-data.js"></script>
+	<script src="../../static/asserts/js/easypiechart.js"></script>
+	<script src="../../static/asserts/js/easypiechart-data.js"></script>
 	
-	 <script src="asserts/js/Lightweight-Chart/jquery.chart.js"></script>
+	 <script src="../../static/asserts/js/Lightweight-Chart/jquery.chart.js"></script>
 	
     <!-- Custom Js -->
-    <script src="asserts/js/custom-scripts.js"></script> 
+    <script src="../../static/asserts/js/custom-scripts.js"></script>
  
 
 </body>

@@ -19,6 +19,9 @@ public interface IAttendeeDao {
 
     //根据ID查询用户
     Attendee findbyId(Integer attendeeId);
+
+    //获取所有的参会者
+    ArrayList<Attendee> getallAttendee();
 }
 
 

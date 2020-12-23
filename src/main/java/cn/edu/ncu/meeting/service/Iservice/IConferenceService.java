@@ -11,4 +11,6 @@ public interface IConferenceService {
     void addConference(String name, String organizername, String datetime, Integer renshu, Integer hotelid, String about, Integer organizerid);
 
     Conference getConferenceById(String id);
+
+    void deleteById(String id);
 }
