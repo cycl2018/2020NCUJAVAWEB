@@ -27,7 +27,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 //静态资源已经做好了映射，不需要再设置
-                registry.addInterceptor(new AttendeeInterceptor()).addPathPatterns("/aganda","/index","/chart","/detail","/message","/table");
+                registry.addInterceptor(new AttendeeInterceptor()).addPathPatterns("/agenda","/index","/chart","/detail","/message","/table");
                 registry.addInterceptor(new OrganizerInterceptor()).addPathPatterns("/index_organizer","/form","/addconference");
             }
         };

@@ -20,7 +20,7 @@ public class ChartController {
     //这里为空或者是login都能进入该方法
     @RequestMapping( value = "/chart")
     public String login() {
-        return "chart";
+        return "chart.html";
     }
 
 

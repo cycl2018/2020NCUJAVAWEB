@@ -23,7 +23,7 @@ public class TableController {
         ArrayList<Conference> conferenceList = conferenceService.getallConference();
         model.addAttribute("conferenceList",conferenceList);
         System.out.println(conferenceList);
-        return "table";
+        return "table.html";
     }
 
 

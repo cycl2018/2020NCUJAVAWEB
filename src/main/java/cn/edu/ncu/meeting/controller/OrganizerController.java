@@ -24,7 +24,7 @@ public class OrganizerController {
     //这里为空或者是login都能进入该方法
     @RequestMapping("/organizerlogin")
     public String login() {
-        return "organizer_login";
+        return "organizer_login.html";
     }
 
     //登录方法
@@ -36,9 +36,9 @@ public class OrganizerController {
         if (o != null){
             session.setAttribute("organizer",o);
             //跳到组织者的主页面
-            return "index_organizer";
+            return "index_organizer.html";
         }else{
-            return "organizer_login";
+            return "organizer_login.html";
         }
     }
 
@@ -46,7 +46,7 @@ public class OrganizerController {
     //这里为空或者是login都能进入该方法
     @RequestMapping("/index_organizer")
     public String index_organizer() {
-        return "index_organizer";
+        return "index_organizer.html";
     }
 
 

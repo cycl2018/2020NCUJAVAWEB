@@ -12,7 +12,7 @@ public class MessageController {
     //这里为空或者是login都能进入该方法
     @RequestMapping( value = "/message")
     public String login() {
-        return "message";
+        return "message.html";
     }
 
 

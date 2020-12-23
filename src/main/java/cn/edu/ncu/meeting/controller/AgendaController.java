@@ -34,7 +34,7 @@ public class AgendaController {
         ArrayList<Participate> p_list = participateService.getByattendeeId_Date(attendeeid,date_format);
         model.addAttribute("p_list",p_list);
         System.out.println(p_list);
-        return "agenda";
+        return "agenda.html";
     }
 
 

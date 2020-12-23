@@ -42,7 +42,7 @@ public class ConferenceController {
         Integer organizerid = organizer.getId();
         //增加一条会议
         conferenceService.addConference(name,organizername,datetime,Integer.valueOf(renshu),Integer.valueOf(hotelid),about,organizerid);
-        return "form";
+        return "form.html";
     }
 
 
@@ -59,7 +59,7 @@ public class ConferenceController {
         //将会议信息带到页面上
         model.addAttribute("c_detail",c_detail);
         model.addAttribute("attendee",a);
-        return "conference_detail";
+        return "conference_detail.html";
     }
 
 

@@ -12,7 +12,7 @@ public class FormController {
     //这里为空或者是login都能进入该方法
     @RequestMapping( value = "/form")
     public String login() {
-        return "form";
+        return "form.html";
     }
 
 

@@ -27,12 +27,12 @@ public class AttendeeController {
     //这里为空或者是login都能进入该方法
     @RequestMapping({"", "login"})
     public String login() {
-        return "attendee_login";
+        return "attendee_login.html";
     }
     //主界面的映射
     @RequestMapping( value = "/index")
     public String index() {
-        return "index";
+        return "index.html";
     }
 
 
@@ -48,12 +48,12 @@ public class AttendeeController {
             //登录成功,为了防止表单重复提交，可以重定向到主页
             session.setAttribute("attendee",a);
             //使用重定向可以将一个控制器调用另一个控制器
-            return "index";
+            return "index.html";
         }else{
             //登陆失败
             //存放错误消息
             map.put("message","请输入用户名密码");
-            return "attendee_login";
+            return "attendee_login.html";
         }
     }
 

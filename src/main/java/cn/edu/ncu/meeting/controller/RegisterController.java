@@ -23,7 +23,7 @@ public class RegisterController {
     //这里为空或者是login都能进入该方法
     @RequestMapping( value = "/register")
     public String register() {
-        return "register";
+        return "register.html";
     }
 
     @PostMapping("/registersubmit")
