@@ -1,6 +1,8 @@
 package cn.edu.ncu.meeting.service.impl;
 
 import cn.edu.ncu.meeting.dao.HotelDao;
+import cn.edu.ncu.meeting.dao.RoomDao;
+import cn.edu.ncu.meeting.entity.Driver;
 import cn.edu.ncu.meeting.entity.Hotel;
 import cn.edu.ncu.meeting.entity.HotelOrder;
 import cn.edu.ncu.meeting.service.HotelService;
@@ -18,10 +20,13 @@ import java.util.List;
 public class HotelServiceImpl implements HotelService {
     @Resource
     private HotelDao hotelDao;
+    @Resource
+    private RoomDao roomDao;
 
     @Override
-    public void addHotel(String name, String address, String tel, int grade) {
-        hotelDao.addHotel(name,address,tel,grade);
+    public void addHotel(String name,String address,String tel,int grade,
+                             String hotelUserName,String password){
+        hotelDao.addHotel(name,address,tel,grade,hotelUserName,password);
     }
 
     @Override
@@ -41,9 +46,10 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public void confirmHotelOrder(int orderId) {
+    public void confirmHotelOrder(int orderId,int roomId) {
         Timestamp startTime = new Timestamp(System.currentTimeMillis());
-        hotelDao.confirmHotelOrder(orderId,startTime);
+
+        hotelDao.confirmHotelOrder(orderId,roomId,startTime);
     }
 
     @Override
@@ -57,5 +63,16 @@ public class HotelServiceImpl implements HotelService {
     @Override
     public List<HotelOrder> findHotelOrder(int hotelId) {
         return hotelDao.findHotelOrder(hotelId);
+    }
+
+    @Override
+    public Hotel login(String name, String password) {
+        List<Hotel> list = hotelDao.findAllHotel();
+        for(Hotel hotel : list){
+            if(hotel.getPassword().equals(password) && hotel.getHotelUserName().equals(name)) {
+                return hotel;
+            }
+        }
+        return null;
     }
 }

@@ -1,7 +1,9 @@
 package cn.edu.ncu.meeting.service;
 
+import cn.edu.ncu.meeting.entity.Driver;
 import cn.edu.ncu.meeting.entity.Hotel;
 import cn.edu.ncu.meeting.entity.HotelOrder;
+import org.apache.ibatis.annotations.Insert;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -16,9 +18,11 @@ public interface HotelService {
      * @param address 酒店地址
      * @param tel 酒店电话
      * @param grade 酒店等级
+     * @param hotelUserName 登录用户名
+     * @param password 密码
      */
-    void addHotel(String name,String address,String tel,int grade);
-
+    void addHotel(String name,String address,String tel,int grade,
+                  String hotelUserName,String password);
     /**
      * 查找所有酒店
      * @return Hotel List
@@ -42,8 +46,9 @@ public interface HotelService {
     /**
      * 酒店确认订单
      * @param orderId 订单编号
+     * @param roomId 房间号
      */
-    void confirmHotelOrder(int orderId);
+    void confirmHotelOrder(int orderId,int roomId);
 
     /**
      * 完成订单
@@ -57,4 +62,12 @@ public interface HotelService {
      * @return 查找到的订单
      */
     List<HotelOrder> findHotelOrder(int hotelId);
+
+    /**
+     * 登录
+     * @param name 用户名
+     * @param password 密码
+     * @return hotel
+     */
+    Hotel login(String name, String password);
 }

@@ -79,14 +79,23 @@ public interface RoomDao {
 
     /**
      * 更新房间状态为true，预定房间
-     * @param type 房间类型
+     * @param roomId 房间类型
      * @param hotelId 酒店id
      */
-    @Update("UPDATE room SET used = 1 WHERE id IN(" +
-            "SELECT a.id FROM" +
-            "(SELECT id FROM room WHERE roomType = #{type} " +
-            "AND used = 0 AND hotelId = #{hotelId} LIMIT 1)"+
-            "AS a)")
-    void updateRoomUsedTrueByType(@Param("type") String type,
+
+    @Update("UPDATE room SET used = 1 " +
+            "WHERE id = #{roomId} AND hotelId = #{hotelId}")
+    void updateRoomUsedTrueByType(@Param("roomId") int roomId,
                                   @Param("hotelId") int hotelId);
+
+    @Select("SELECT * FROM room WHERE roomType = #{type} " +
+            "AND used = 0 AND hotelId = #{hotelId}")
+    List<Room> findFreeRoomId(String type,int hotelId);
+    /**
+     * 删除房间
+     * @param roomId 房间id
+     * @param hotelId 酒店id
+     */
+    @Delete("Delete FROM room WHERE id = #{roomId} AND hotelID = #{hotelId}")
+    void delRoomById(int roomId,int hotelId);
 }

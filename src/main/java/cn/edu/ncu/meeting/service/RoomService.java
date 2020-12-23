@@ -47,6 +47,14 @@ public interface RoomService {
      * 更新房间状态为true，预定房间
      * @param type 房间类型
      * @param hotelId 酒店id
+     * @return room
      */
-    void updateRoomUsedTrueByType(String type,int hotelId);
+    Room updateRoomUsedTrueByType(String type,int hotelId);
+
+    /**
+     * 删除房间
+     * @param roomId 房间id
+     * @param hotelId 酒店id
+     */
+    void delRoomById(int roomId,int hotelId);
 }

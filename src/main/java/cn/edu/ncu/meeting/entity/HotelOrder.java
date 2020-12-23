@@ -17,6 +17,15 @@ public class HotelOrder {
   private int finish;
   private int attendeeId;
   private String attendeeTel;
+  private int roomId;
+
+  public int getRoomId() {
+    return roomId;
+  }
+
+  public void setRoomId(int roomId) {
+    this.roomId = roomId;
+  }
 
   public int getId() {
     return id;

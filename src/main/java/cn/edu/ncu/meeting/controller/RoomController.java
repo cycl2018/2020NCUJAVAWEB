@@ -5,15 +5,17 @@ import cn.edu.ncu.meeting.entity.Room;
 import cn.edu.ncu.meeting.entity.RoomNum;
 import cn.edu.ncu.meeting.service.HotelService;
 import cn.edu.ncu.meeting.service.RoomService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
  * @author 赖澄宇
  */
-@RestController
+@Controller
 @RequestMapping("/room")
 public class RoomController {
     @Resource(name = "roomServiceImpl")
@@ -22,21 +24,46 @@ public class RoomController {
     private HotelService hotelService;
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public void addRoom(@RequestParam(value = "type") String type,
-                        @RequestParam(value = "used") boolean used,
+    @ResponseBody
+    public boolean addRoom(@RequestParam(value = "type") String type,
                         @RequestParam(value = "price")int price,
-                        @RequestParam(value = "peopleNum") int peopleNum,
-                        @RequestParam(value = "hotelId") int hotelId){
-        roomService.addRoom(type,used,price,peopleNum,hotelId);
+                        HttpSession session){
+        int peopleNum ;
+        if("单人房".equals(type)) {
+            peopleNum = 1;
+        } else if("双人房".equals(type)){
+            peopleNum = 2;
+        }else{
+            peopleNum = 4;
+        }
+        Object userInfo = session.getAttribute("hotelId");
+        if(userInfo ==  null){
+            return false;
+        }
+        int hotelId =  Integer.parseInt(String.valueOf(userInfo));
+        try {
+            roomService.addRoom(type, false, price, peopleNum, hotelId);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     @RequestMapping(value = "/findRoomByHotelId",method = RequestMethod.POST)
-    public List<Room> findRoomByHotelId(@RequestParam("hotelId") int hotelId){
+    @ResponseBody
+    public List<Room> findRoomByHotelId(HttpSession session){
+        Object userInfo = session.getAttribute("hotelId");
+        if(userInfo ==  null){
+            return null;
+        }
+        int hotelId =  Integer.parseInt(String.valueOf(userInfo));
 
         return roomService.findRoomByHotelId(hotelId);
     }
 
     @RequestMapping(value = "/findRoomTypeNum",method = RequestMethod.POST)
+    @ResponseBody
     public List<RoomNum> findRoomTypeNum(@RequestParam("hotelId") int hotelId) {
         return roomService.findRoomTypeNum(hotelId);
     }
@@ -56,6 +83,30 @@ public class RoomController {
         roomService.updateRoomUsedTrueByType(type,hotelId);
     }
 
+    @RequestMapping(value = "/addRoom")
+    public String addRoom(){
+        return "hotel/addRoom.html";
+    }
+
+    @RequestMapping(value = "/delRoom")
+    @ResponseBody
+    public boolean delRoom(int roomId,HttpSession session){
+        System.out.println(roomId);
+        Object userInfo = session.getAttribute("hotelId");
+        if(userInfo ==  null){
+            return false;
+        }
+        int hotelId =  Integer.parseInt(String.valueOf(userInfo));
+        try {
+            System.out.println(roomId);
+            System.out.println(hotelId);
+            roomService.delRoomById(roomId, hotelId);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
     /**
      * 推荐房间
      * @param peopleNum 人数需求
@@ -63,6 +114,7 @@ public class RoomController {
      * @return 推荐的房间，找不到返回空
      */
     @RequestMapping(value = "/roomRecommend",method = RequestMethod.POST)
+    @ResponseBody
     public Room roomRecommend(@RequestParam("peopleNum") int peopleNum,
                              @RequestParam("expectHotelGrade") int expectHotelGrade){
         String recommendType;

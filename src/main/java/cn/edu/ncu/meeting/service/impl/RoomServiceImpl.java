@@ -44,7 +44,17 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void updateRoomUsedTrueByType(String type, int hotelId) {
-        roomDao.updateRoomUsedTrueByType(type,hotelId);
+    public Room updateRoomUsedTrueByType(String type, int hotelId) {
+        List<Room> list = roomDao.findFreeRoomId(type,hotelId);
+        Room room = list.get(0);
+
+        roomDao.updateRoomUsedTrueByType(room.getId(),hotelId);
+        return room;
+    }
+
+    @Override
+    public void delRoomById(int roomId, int hotelId) {
+        System.out.println("del");
+        roomDao.delRoomById(roomId,hotelId);
     }
 }

@@ -4,3 +4,9 @@ spring:
     username: root
     password: teapot0033
     driver-class-name: com.mysql.cj.jdbc.Driver
+  thymeleaf:
+    suffix: html
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html

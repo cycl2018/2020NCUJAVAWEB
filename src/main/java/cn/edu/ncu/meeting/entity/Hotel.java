@@ -11,6 +11,8 @@ public class Hotel {
     private String address;
     private String tel;
     private int grade;
+    private String hotelUserName;
+    private String password;
 
     public int getId() {
         return id;
@@ -50,5 +52,21 @@ public class Hotel {
 
     public void setGrade(int grade) {
         this.grade = grade;
+    }
+
+    public String getHotelUserName() {
+        return hotelUserName;
+    }
+
+    public void setHotelUserName(String hotelUserName) {
+        this.hotelUserName = hotelUserName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

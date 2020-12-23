@@ -18,23 +18,18 @@ public interface HotelDao {
      * @param address 酒店地址
      * @param tel 酒店电话
      * @param grade 酒店等级
+     * @param hotelUserName 登录用户名
+     * @param password 密码
      */
-    @Insert("INSERT INTO hotel (name,address,tel,grade) " +
-            "VALUE(#{name},#{address},#{tel},#{grade})")
-    void addHotel(@Param("name") String name,@Param("address")String address,
-             @Param("tel") String tel,@Param("grade") int grade);
+    @Insert("INSERT INTO hotel (name,address,tel,grade,hotelUserName,password) " +
+            "VALUE(#{name},#{address},#{tel},#{grade},#{hotelUserName},#{password})")
+    void addHotel(String name,String address,String tel,int grade,
+                  String hotelUserName,String password);
 
     /**
      * 查找所有酒店
      * @return Hotel List
      */
-    @Results({
-            @Result(property = "id",column = "id"),
-            @Result(property = "name",column = "name"),
-            @Result(property = "address",column = "address"),
-            @Result(property = "tel",column = "tel"),
-            @Result(property = "grade",column = "grade"),
-    })
     @Select("SELECT * FROM hotel")
     List<Hotel> findAllHotel();
 
@@ -43,13 +38,6 @@ public interface HotelDao {
      * @param hotelId 酒店id
      * @return Hotel List
      */
-    @Results({
-            @Result(property = "id",column = "id"),
-            @Result(property = "name",column = "name"),
-            @Result(property = "address",column = "address"),
-            @Result(property = "tel",column = "tel"),
-            @Result(property = "grade",column = "grade"),
-    })
     @Select("SELECT * FROM hotel WHERE id = #{hotelId}")
     List<Hotel> findHotelById(@Param("hotelId") int hotelId);
 
@@ -66,13 +54,13 @@ public interface HotelDao {
                         int attendeeId,String attendeeTel);
 
     /**
-     * 酒店确认订单
+     * 酒店确认订单，分配房间号
      * @param orderId 订单编号
      * @param startTime 确认时间/开始居住时间
      */
-    @Update("UPDATE hotelOrder SET confirm = 1, startTime = #{startTime}" +
+    @Update("UPDATE hotelOrder SET confirm = 1, startTime = #{startTime}, roomId = #{roomId} " +
             "WHERE id = #{orderId}")
-    void confirmHotelOrder(int orderId,Timestamp startTime);
+    void confirmHotelOrder(int orderId,int roomId,Timestamp startTime);
 
     /**
      * 完成订单
