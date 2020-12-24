@@ -20,6 +20,9 @@ public interface IConferenceDao {
 
     //根据id查询会议
     Conference getConferenceById(String id);
+
+    //删除一条会议
+    void deleteById(String id);
 }
 
 

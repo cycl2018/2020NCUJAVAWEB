@@ -19,6 +19,12 @@
         insert into organizer(username,password) values (#{username},#{password})
     </insert>
 
+    <select id="getallOrganizer" resultType="cn.edu.ncu.meeting.entity.Organizer">
+        select
+        *
+        from organizer
+    </select>
+
 
 </mapper>
 

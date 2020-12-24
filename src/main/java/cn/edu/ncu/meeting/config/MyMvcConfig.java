@@ -1,7 +1,6 @@
 package cn.edu.ncu.meeting.config;
 
 import cn.edu.ncu.meeting.component.AttendeeInterceptor;
-import cn.edu.ncu.meeting.component.DriverInterceptor;
 import cn.edu.ncu.meeting.component.HotelInterceptor;
 import cn.edu.ncu.meeting.component.OrganizerInterceptor;
 import org.springframework.context.annotation.Bean;
@@ -29,10 +28,11 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 //静态资源已经做好了映射，不需要再设置
-                registry.addInterceptor(new AttendeeInterceptor()).addPathPatterns("/agenda","/index","/chart","/detail","/message","/table","/hotel/seed");
+                registry.addInterceptor(new AttendeeInterceptor()).addPathPatterns("/agenda","/index","/chart","/detail","/message","/table");
                 registry.addInterceptor(new OrganizerInterceptor()).addPathPatterns("/index_organizer","/form","/addconference");
                 registry.addInterceptor(new DriverInterceptor()).addPathPatterns("/driver/**").excludePathPatterns("/driver/login","/driver/register","/driver/goLogin");
                 registry.addInterceptor(new HotelInterceptor()).addPathPatterns("/hotel/**").excludePathPatterns("/hotel/index","/hotel/register","/hotel/seed","/hotel/login");
+                registry.addInterceptor(new ManagerInterceptor()).addPathPatterns("/detail_delete","/deletesubmit","/chartmanager","/indexmanager","/messagemanager","/tablemanager");
             }
         };
         return adapter;

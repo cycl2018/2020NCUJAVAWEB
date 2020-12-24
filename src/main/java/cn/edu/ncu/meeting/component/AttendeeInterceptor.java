@@ -18,7 +18,7 @@ public class AttendeeInterceptor implements HandlerInterceptor {
 //        System.out.println("attendee"+request.getRequestURL());
         if(attendee == null){
             //未登录，滚回登录页
-            response.sendRedirect("/");
+            response.sendRedirect("/loginfail");
             return false;
         }else{
             //已登录，放行请求

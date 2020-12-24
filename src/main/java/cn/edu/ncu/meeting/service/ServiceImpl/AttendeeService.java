@@ -6,6 +6,8 @@ import cn.edu.ncu.meeting.service.Iservice.IAttendeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class AttendeeService implements IAttendeeService {
     @Autowired
@@ -21,5 +23,11 @@ public class AttendeeService implements IAttendeeService {
     @Override
     public void register(String username, String password) {
         attendeeDao.register(username,password);
+    }
+
+    //查询所有参会者
+    @Override
+    public ArrayList<Attendee> getallAttendee() {
+        return attendeeDao.getallAttendee();
     }
 }

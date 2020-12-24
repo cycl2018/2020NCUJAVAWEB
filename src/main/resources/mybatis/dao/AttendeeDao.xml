@@ -24,6 +24,12 @@
         select * from attendee where id=#{attendeeId}
     </select>
 
+    <select id="getallAttendee" resultType="cn.edu.ncu.meeting.entity.Attendee">
+        select
+        *
+        from attendee
+    </select>
+
 </mapper>
 
 

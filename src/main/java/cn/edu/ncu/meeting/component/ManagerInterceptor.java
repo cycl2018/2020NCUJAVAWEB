@@ -1,7 +1,7 @@
 package cn.edu.ncu.meeting.component;
 
 import cn.edu.ncu.meeting.entity.Attendee;
-import cn.edu.ncu.meeting.entity.Organizer;
+import cn.edu.ncu.meeting.entity.Manager;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -9,15 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 会议组织者的拦截器
+ * 会议参与者的拦截器
  */
-public class OrganizerInterceptor implements HandlerInterceptor {
+public class ManagerInterceptor implements HandlerInterceptor {
     //目标方法执行之前
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        Organizer organizer = (Organizer) request.getSession().getAttribute("organizer");
-//        System.out.println("organizer"+request.getRequestURL());
-        if(organizer == null){
+        Manager manager = (Manager) request.getSession().getAttribute("manager");
+        if(manager == null){
             //未登录，滚回登录页
             response.sendRedirect("/loginfail");
             return false;

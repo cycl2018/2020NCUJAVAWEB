@@ -29,4 +29,10 @@ public class ConferenceService implements IConferenceService {
     public Conference getConferenceById(String id) {
         return conferenceDao.getConferenceById(id);
     }
+
+    //删除一条会议
+    @Override
+    public void deleteById(String id) {
+        conferenceDao.deleteById(id);
+    }
 }
