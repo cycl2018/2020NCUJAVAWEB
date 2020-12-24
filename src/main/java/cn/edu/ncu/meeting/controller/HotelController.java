@@ -187,6 +187,8 @@ public class HotelController {
     public Hotel hotelRecommend(@RequestParam("peopleNum") int peopleNum,
                               @RequestParam("expectHotelGrade") int expectHotelGrade){
         String recommendType;
+        System.out.println(peopleNum);
+        System.out.println(expectHotelGrade);
         int firstType = 1;
         int secondType = 2;
         if(peopleNum <= firstType){
@@ -220,6 +222,7 @@ public class HotelController {
                 if(!room.isUsed() && room.getType().equals(recommendType)){
                     ans = room;
                     res = hotel;
+                    System.out.println(hotel.getName());
                     break;
                 }
             }
@@ -227,6 +230,7 @@ public class HotelController {
                 break;
             }
         }
+
         return res;
     }
 }
