@@ -75,4 +75,9 @@ public class HotelServiceImpl implements HotelService {
         }
         return null;
     }
+
+    @Override
+    public void deleteHotel(int hotelId) {
+        hotelDao.deleteHotel(hotelId);
+    }
 }

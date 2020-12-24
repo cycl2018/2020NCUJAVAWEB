@@ -78,4 +78,7 @@ public interface HotelDao {
      */
     @Select("SELECT * FROM hotelOrder WHERE hotelId = #{hotelId}")
     List<HotelOrder> findHotelOrder(int hotelId);
+
+    @Delete("DELETE FROM hotel WHERE id = #{hotelId}")
+    void deleteHotel(int hotelId);
 }

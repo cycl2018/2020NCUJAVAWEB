@@ -70,4 +70,6 @@ public interface HotelService {
      * @return hotel
      */
     Hotel login(String name, String password);
+
+    void deleteHotel(int hotelId);
 }

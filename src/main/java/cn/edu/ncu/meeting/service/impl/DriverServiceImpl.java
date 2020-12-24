@@ -90,4 +90,14 @@ public class DriverServiceImpl implements DriverService {
     public void evaluateDriverOrder(int id, int evaluateScore, String evaluate) {
         driverDao.evaluateDriverOrder(id,evaluateScore,evaluate);
     }
+
+    @Override
+    public List<Driver> findAll() {
+        return driverDao.findAll();
+    }
+
+    @Override
+    public void deleteDriver(int driverId) {
+        driverDao.deleteDriver(driverId);
+    }
 }

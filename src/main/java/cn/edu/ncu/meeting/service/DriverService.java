@@ -85,4 +85,8 @@ public interface DriverService {
      */
     void evaluateDriverOrder(int id,int evaluateScore,String evaluate);
 
+
+    List<Driver> findAll();
+
+    void deleteDriver(int driverId);
 }

@@ -2,6 +2,7 @@ package cn.edu.ncu.meeting.dao;
 import cn.edu.ncu.meeting.entity.Driver;
 import cn.edu.ncu.meeting.entity.DriverOrder;
 import org.apache.ibatis.annotations.*;
+import org.springframework.data.domain.DomainEvents;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -107,4 +108,10 @@ public interface DriverDao {
     @Update("UPDATE driverOrder SET evaluateScore=#{evaluateScore},evaluate=#{evaluate}" +
             "WHERE id = #{id}")
     void evaluateDriverOrder(int id,int evaluateScore,String evaluate);
+
+    @Select("SELECT * FROM driver")
+    List<Driver> findAll();
+
+    @Delete("DELETE FROM driver WHERE id = #{driverId}")
+    void deleteDriver(int driverId);
 }
