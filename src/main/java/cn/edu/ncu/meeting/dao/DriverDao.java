@@ -87,7 +87,7 @@ public interface DriverDao {
      * @param driverId 司机id
      * @return 所有接受的还未完成的订单
      */
-    @Select("SELECT * FROM driverOrder WHERE driver = #{driver} AND finish = 0")
+    @Select("SELECT * FROM driverOrder WHERE driverId = #{driverId} AND finish = 0")
     List<DriverOrder> getConfirmDriverOrder(int driverId);
 
     /**
@@ -95,7 +95,7 @@ public interface DriverDao {
      * @param driverId 司机id
      * @return 订单
      */
-    @Select("SELECT * FROM driverOrder WHERE driver = #{driver} AND finish = 1")
+    @Select("SELECT * FROM driverOrder WHERE driverId = #{driverId} AND finish = 1")
     List<DriverOrder> getFinishDriverOrder(int driverId);
 
     /**

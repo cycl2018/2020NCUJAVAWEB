@@ -1,146 +1,84 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" th:src="@{/driver/scripts/jquery/jquery-1.7.1.js}"></script>
-<link th:href="@{/driver/style/authority/basic_layout.css}" rel="stylesheet" type="text/css">
-<link th:href="@{/driver/style/authority/common_style.css}" rel="stylesheet" type="text/css">
-<script type="text/javascript" th:src="@{/driver/scripts/authority/commonAll.js}"></script>
-<script type="text/javascript" th:src="@{/driver/scripts/fancybox/jquery.fancybox-1.3.4.js}"></script>
-<script type="text/javascript" th:src="@{/driver/scripts/fancybox/jquery.fancybox-1.3.4.pack.js}"></script>
-<link rel="stylesheet" type="text/css" th:href="@{/driver/style/authority/jquery.fancybox-1.3.4.css}" media="screen"></link>
-<script type="text/javascript" th:src="@{/driver/scripts/artDialog/artDialog.js}"></script>
-<title>车队司机模块</title>
-<script type="text/javascript">
-	$(document).ready(function(){
-		/** 新增   **/
-	    $("#addBtn").fancybox({
-	    	'href'  : 'house_edit.html',
-	    	'width' : 733,
-	        'height' : 530,
-	        'type' : 'iframe',
-	        'hideOnOverlayClick' : false,
-	        'showCloseButton' : false,
-	        'onClosed' : function() { 
-	        	window.location.href = 'house_list.html';
-	        }
-	    });
-		
-	    /** 导入  **/
-	    $("#importBtn").fancybox({
-	    	'href'  : '/xngzf/archives/importFangyuan.action',
-	    	'width' : 633,
-	        'height' : 260,
-	        'type' : 'iframe',
-	        'hideOnOverlayClick' : false,
-	        'showCloseButton' : false,
-	        'onClosed' : function() { 
-	        	window.location.href = 'house_list.html';
-	        }
-	    });
-		
-	    /**编辑   **/
-	    $("a.edit").fancybox({
-	    	'width' : 733,
-	        'height' : 530,
-	        'type' : 'iframe',
-	        'hideOnOverlayClick' : false,
-	        'showCloseButton' : false,
-	        'onClosed' : function() { 
-	        	window.location.href = 'house_list.html';
-	        }
-	    });
-	});
-	/** 用户角色   **/
-	var userRole = '';
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" th:src="@{/driver/scripts/jquery/jquery-1.7.1.js}"></script>
+    <link th:href="@{/driver/style/authority/basic_layout.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/driver/style/authority/common_style.css}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" th:src="@{/driver/scripts/authority/commonAll.js}"></script>
+    <script type="text/javascript" th:src="@{/driver/scripts/fancybox/jquery.fancybox-1.3.4.js}"></script>
+    <script type="text/javascript" th:src="@{/driver/scripts/fancybox/jquery.fancybox-1.3.4.pack.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/driver/style/authority/jquery.fancybox-1.3.4.css}"
+          media="screen"/>
+    <script type="text/javascript" th:src="@{/driver/scripts/artDialog/artDialog.js}"></script>
+    <title>车队司机模块</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/asserts/materialize/css/materialize.min.css}" media="screen,projection" />
+	<!-- Bootstrap Styles-->
+	<link th:href="@{/asserts/css/bootstrap.css}" rel="stylesheet" />
+	<!-- FontAwesome Styles-->
+	<link th:href="@{/asserts/css/font-awesome.css}" rel="stylesheet" />
+	<!-- Morris Chart Styles-->
+	<link th:href="@{/asserts/js/morris/morris-0.4.3.min.css}" rel="stylesheet" />
+	<!-- Custom Styles-->
+	<link th:href="@{/asserts/css/custom-styles.css}" rel="stylesheet" />
+	<!-- Google Fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" th:href="@{/asserts/js/Lightweight-Chart/cssCharts.css}">
 
-
-	/** 普通跳转 **/
-	function jumpNormalPage(page){
-		$("#submitForm").attr("action", "house_list.html?page=" + page).submit();
-	}
-	
-	/** 输入页跳转 **/
-	function jumpInputPage(totalPage){
-		// 如果“跳转页数”不为空
-		if($("#jumpNumTxt").val() != ''){
-			var pageNum = parseInt($("#jumpNumTxt").val());
-			// 如果跳转页数在不合理范围内，则置为1
-			if(pageNum<1 | pageNum>totalPage){
-				art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'请输入合适的页数，\n自动为您跳到首页', ok:true,});
-				pageNum = 1;
-			}
-			$("#submitForm").attr("action", "house_list.html?page=" + pageNum).submit();
-		}else{
-			// “跳转页数”为空
-			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'请输入合适的页数，\n自动为您跳到首页', ok:true,});
-			$("#submitForm").attr("action", "house_list.html?page=" + 1).submit();
-		}
-	}
-</script>
-<style>
-	.alt td{ background:black !important;}
-</style>
+    <style>
+        .alt td {
+            background: black !important;
+        }
+    </style>
 </head>
 <body>
-	<form id="submitForm" name="submitForm" action="" method="post">
-		<input type="hidden" name="allIDCheck" value="" id="allIDCheck"/>
-		<input type="hidden" name="fangyuanEntity.fyXqName" value="" id="fyXqName"/>
-		<div id="container">
-			<div class="ui_content">
-				<div class="ui_tb">
-					<table class="table" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
-						<tr>
-							<th width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
-							</th>
-							<th>订单号</th>
-							<th>用户</th>
-							<th>电话</th>
-							<th>接送时间</th>
-							<th>接送地点</th>
-							<th>操作</th>
-						</tr>
-						<tbody id="tbody-result">
-						</tbody>
-					</table>
-				</div>
-			</div>
+	<div class="card">
+		<div class="card-action">
+			Tables
 		</div>
-	</form>
-</body>
-<script>
-	$(function (){
-		$.ajax({
-			async:false,
-			type: "post",
-			dataType: "json",
-			url: "/driver/getFreeDriverOrder",
-			data: {
-			},
-			success: function (data) {
-				if (data) {
-					var str = "";
-					for (i in data) {
-						str += "<tr>" +
-								"<td>" + data[i].id + "</td>" +
-								"<td>" + data[i].attendeeId + "</td>" +
-								"<td>" + data[i].attendeeTel + "</td>" +
-								"<td>" + data[i].deadLine + "</td>" +
-								"<td>" + data[i].address + "</td>" +
-								"<td>" + "<button class='layui-btn' onclick='confirmOrder(this.parentNode.parentNode)'>选择</button>" + "</td>" +
-								"</tr>";
-					}
-					$("#tbody-result").html(str);
-				}
-			},
-			error: function () {
-				alert("查询失败")
-			}
-		});
-	});
-	function confirmOrder(r){
+		<div class="card-content">
+			<div class="table-responsive">
+				<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+					<thead>
+					<tr>
+						<th>订单号</th>
+						<th>订单生成时间</th>
+						<th>用户</th>
+						<th>电话</th>
+						<th>接送时间</th>
+						<th>接送地点</th>
+						<th>选项</th>
+					</tr>
+					</thead>
+					<tbody>
 
-	}
+					<tr th:each="conference:${conferenceList}">
+						<td th:text="${conference.id}"></td>
+						<td th:text="${conference.orderTime}"></td>
+						<td th:text="${conference.attendeeId}"></td>
+						<td th:text="${conference.attendeeTel}"></td>
+						<td th:text="${conference.deadLine}"></td>
+						<td th:text="${conference.address}"></td>
+						<td>
+							<a th:href="@{'/driver/confirmDriverOrder?id='+${conference.id}}">确认订单</a>
+						</td>
+					</tr>
+
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+<script th:src="@{/asserts/js/dataTables/jquery.dataTables.js}"></script>
+<script th:src="@{/asserts/js/dataTables/dataTables.bootstrap.js}"></script>
+<script>
+	$(document).ready(function () {
+		$('#dataTables-example').dataTable();
+	});
 </script>
 </html>

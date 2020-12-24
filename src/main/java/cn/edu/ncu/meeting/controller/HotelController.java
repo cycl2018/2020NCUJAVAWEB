@@ -1,9 +1,6 @@
 package cn.edu.ncu.meeting.controller;
 
-import cn.edu.ncu.meeting.entity.Hotel;
-import cn.edu.ncu.meeting.entity.HotelOrder;
-import cn.edu.ncu.meeting.entity.Room;
-import cn.edu.ncu.meeting.entity.RoomNum;
+import cn.edu.ncu.meeting.entity.*;
 import cn.edu.ncu.meeting.service.HotelService;
 import cn.edu.ncu.meeting.service.RoomService;
 import cn.edu.ncu.meeting.utils.Md5Utils;
@@ -15,8 +12,9 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * @author 赖澄宇
+ * @author cycl
  */
 @Controller
 @RequestMapping("/hotel")
@@ -54,11 +52,25 @@ public class HotelController {
 
     @RequestMapping(value = "/seedHotelOrder",method = RequestMethod.POST)
     @ResponseBody
-    public void seedHotelOrder(int hotelId, int attendeeId, String attendeeTel){
+    public boolean seedHotelOrder(int hotelId, String attendeeTel,HttpSession session){
         System.out.println(hotelId);
-        System.out.println(attendeeId);
+
         System.out.println(attendeeTel);
-        hotelService.seedHotelOrder(hotelId,attendeeId,attendeeTel);
+        int attendeeId;
+        try {
+            Attendee a = (Attendee) session.getAttribute("attendee");
+            attendeeId = a.getId();
+            hotelService.seedHotelOrder(hotelId, attendeeId, attendeeTel);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @RequestMapping(value = "/seed")
+    public String seed(){
+        return "reserve/seedHotel.html";
     }
 
     @RequestMapping(value = "/confirmHotelOrder",method = RequestMethod.POST)
@@ -163,8 +175,58 @@ public class HotelController {
     public String hotelOrderList(){
         return "hotel/hotel-order-list.html";
     }
-    @RequestMapping("/addHotelOrder")
-    public String sendHotelOrder(){
-        return "hotel/hotel-order-add.html";
+
+    /**
+     * 推荐酒店
+     * @param peopleNum 预定人数
+     * @param expectHotelGrade 期望等级
+     * @return 酒店
+     */
+    @RequestMapping(value = "/hotelRecommend",method = RequestMethod.POST)
+    @ResponseBody
+    public Hotel hotelRecommend(@RequestParam("peopleNum") int peopleNum,
+                              @RequestParam("expectHotelGrade") int expectHotelGrade){
+        String recommendType;
+        int firstType = 1;
+        int secondType = 2;
+        if(peopleNum <= firstType){
+            recommendType = "单人房";
+        }else if (peopleNum == secondType) {
+            recommendType = "双人房";
+        }else{
+            recommendType = "豪华套房";
+        }
+        List<Hotel> list = hotelService.findAllHotel();
+        Room ans = null;
+        Hotel res = null;
+        for(Hotel hotel:list){
+            //不符合酒店期望等级
+            if(hotel.getGrade()!=expectHotelGrade){
+                continue;
+            }
+            List<RoomNum> roomList = roomService.findRoomTypeNum(hotel.getId());
+            boolean flag = false;
+            for(RoomNum roomNum:roomList){
+                if(roomNum.getType().equals(recommendType) && roomNum.getNum()>0){
+                    flag = true;
+                    break;
+                }
+            }
+            if(!flag){
+                continue;
+            }
+            List<Room> roomList1 = roomService.findRoomByHotelId(hotel.getId());
+            for(Room room:roomList1){
+                if(!room.isUsed() && room.getType().equals(recommendType)){
+                    ans = room;
+                    res = hotel;
+                    break;
+                }
+            }
+            if(ans != null){
+                break;
+            }
+        }
+        return res;
     }
 }

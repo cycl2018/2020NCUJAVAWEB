@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>预定专车</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="" />
+    <link th:href="@{/reserve/css/font-awesome.min.css}" rel="stylesheet" type="text/css" media="all">
+    <link th:href="@{/reserve/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
+</head>
+<body>
+<div class="signupform">
+    <h1>专车预定系统</h1>
+    <div class="container">
+
+        <div class="agile_info">
+            <div class="w3l_form">
+                <div class="left_grid_info">
+                    <h3>又有帅哥预定？</h3>
+                    <h4>欢迎预定专车</h4>
+                    <p> 填写您的电话号码，接送时间，地点</p>
+                    <p>发送后请等待司机确认订单</p>
+                </div>
+            </div>
+            <!--			int hotelId, int attendeeId, String attendeeTel-->
+            <div class="w3_info">
+                <h2>预定专车</h2>
+                <!--						<form action="#" method="post">-->
+                <div class="input-group">
+                    <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <input id="tel" type="text" placeholder="您的电话" required="">
+                </div>
+                <div class="input-group">
+                    <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <input id="time" type="datetime-local" placeholder="接送时间" required="">
+                </div>
+                <div class="input-group">
+                    <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <input id="address" type="text" placeholder="地点" required="">
+                </div>
+                <button class="btn btn-danger btn-block" onclick="play()">发送订单</button >
+                <!--					</form>-->
+            </div>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    function play(){
+        var address = $("#address").val();
+        var tel = $("#tel").val();
+        var time = $("#time").val();
+        time = time.split("T");
+        time= time[0]+" "+time[1]+":00";
+        var flag = 1;
+        if(tel == null || tel=="" || address == null || address == "" || time==null || time==""){
+            alert("所有内容不能为空");
+            flag = 0;
+        }
+
+        if (flag === 1){
+
+            $.ajax({
+                async:false,
+                type: "post",
+                dataType: "json",
+                url: "/driver/sendDriverOrder",
+                data: {
+                    address:address,
+                    attendeeTel:tel,
+                    deadLine:time,
+                },
+                success: function (data) {
+                    if(data == true) {
+                        alert("发送成功");
+                        window.location.href ="/agenda";
+                    }else {
+
+                        alert("请检查信息");
+                    }
+                },
+                error: function () {
+                    alert("发送错误，请联系管理员");
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>

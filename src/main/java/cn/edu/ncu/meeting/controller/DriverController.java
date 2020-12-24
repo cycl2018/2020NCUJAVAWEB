@@ -1,17 +1,16 @@
 package cn.edu.ncu.meeting.controller;
 
-import cn.edu.ncu.meeting.entity.Driver;
-import cn.edu.ncu.meeting.entity.DriverOrder;
+import cn.edu.ncu.meeting.entity.*;
 import cn.edu.ncu.meeting.service.DriverService;
 import cn.edu.ncu.meeting.utils.Md5Utils;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.*;
 import java.util.Map;
 
 /**
@@ -21,6 +20,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/driver")
 public class DriverController {
+
+
     @Resource(name = "driverServiceImpl")
     private DriverService driverService;
 
@@ -56,6 +57,7 @@ public class DriverController {
         System.out.println(name);
         Driver driver = driverService.login(name,password);
         if (driver != null){
+            session.setAttribute("driver",driver);
             session.setAttribute("driverId",driver.getId());
             session.setAttribute("driverName",driver.getName());
             map.put("name",driver.getName());
@@ -73,6 +75,9 @@ public class DriverController {
 
     @RequestMapping(value = "/logout")
     public String logout(HttpSession session) {
+
+        Object userInfo = session.getAttribute("driverId");
+        int driverId =  Integer.parseInt(String.valueOf(userInfo));
         session.invalidate();
         return "driver/login.html";
     }
@@ -83,29 +88,58 @@ public class DriverController {
     }
 
     @RequestMapping(value = "/orderList")
-    public String orderList() {
+    public String orderList(Model model) {
+        List<DriverOrder> list = driverService.getFreeDriverOrder();
+        model.addAttribute("conferenceList",list);
         return "driver/orderList.html";
     }
     @RequestMapping(value = "/acceptedOrderList")
-    public String orderList1() {
+    public String orderList1(Model model,HttpSession session) {
+        Object userInfo = session.getAttribute("driverId");
+        int driverId =  Integer.parseInt(String.valueOf(userInfo));
+        List<DriverOrder> list = driverService.getConfirmDriverOrder(driverId);
+        model.addAttribute("conferenceList",list);
         return "driver/acceptedOrderList.html";
     }
     @RequestMapping(value = "/finishOrderList")
-    public String orderList2() {
+    public String orderList2(Model model,HttpSession session) {
+        Object userInfo = session.getAttribute("driverId");
+        int driverId =  Integer.parseInt(String.valueOf(userInfo));
+        List<DriverOrder> list = driverService.getFinishDriverOrder(driverId);
+        model.addAttribute("conferenceList",list);
         return "driver/finishOrderList.html";
     }
+
+
     @RequestMapping(value = "/sendDriverOrder",method = RequestMethod.POST)
-    void sendDriverOrder(int attendeeId, String attendeeTel, String address, Timestamp deadLine){
-        driverService.sendDriverOrder(attendeeId,attendeeTel,address,deadLine);
+    @ResponseBody
+    public boolean sendDriverOrder( String attendeeTel, String address, Timestamp deadLine,HttpSession session){
+        int attendeeId;
+        System.out.println(attendeeTel);
+        try {
+            Attendee a = (Attendee) session.getAttribute("attendee");
+            attendeeId = a.getId();
+            System.out.println(a.getId());
+            System.out.println(address);
+            driverService.sendDriverOrder(attendeeId, attendeeTel, address, deadLine);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
-    @RequestMapping(value = "/confirmDriverOrder",method = RequestMethod.POST)
-    void confirmDriverOrder(int id,int driverId){
+    @RequestMapping(value = "/confirmDriverOrder")
+    public String confirmDriverOrder(int id,HttpSession session){
+        Object userInfo = session.getAttribute("driverId");
+        int driverId =  Integer.parseInt(String.valueOf(userInfo));
         driverService.confirmDriverOrder(id,driverId);
+        return "redirect:/driver/orderList";
     }
-    @RequestMapping(value = "/finishDriverOrder",method = RequestMethod.POST)
-    void finishDriverOrder(int id){
-        driverService.findDriver(id);
+    @RequestMapping(value = "/finishDriverOrder")
+    public String finishDriverOrder(int id){
+        driverService.finishDriverOrder(id);
+        return "redirect:/driver/acceptedOrderList";
     }
     @RequestMapping(value = "/getFreeDriverOrder",method = RequestMethod.POST)
     @ResponseBody
@@ -124,5 +158,20 @@ public class DriverController {
     void evaluateDriverOrder(int id,int evaluateScore,String evaluate){
         driverService.evaluateDriverOrder(id,evaluateScore,evaluate);
     }
+    @RequestMapping(value = "/seed")
+    public String seedOrder(){
+        return "reserve/seedDriver.html";
+    }
 
+    @RequestMapping(value = "/index")
+    public String index(){
+        return "/driver/index.html";
+    }
+
+    @RequestMapping(value = "/findDriverByName")
+    @ResponseBody
+    public List<Driver> findByName(String name){
+        System.out.println(name);
+        return driverService.findDriverByName(name);
+    }
 }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<title>预定酒店</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords" content="" />
+<link th:href="@{/reserve/css/font-awesome.min.css}" rel="stylesheet" type="text/css" media="all">
+<link th:href="@{/reserve/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
+</head>
+<body>
+<div class="signupform">
+<h1>酒店预定系统</h1>
+	<div class="container">
+		
+		<div class="agile_info">
+			<div class="w3l_form">
+				<div class="left_grid_info">
+					<h3>又有帅哥预定？</h3>
+					<h4>欢迎预定酒店</h4>
+					<p> 填写您的电话号码并选择您需要预定的酒店，请在三天内前往酒店否则预定无效</p>
+					<p>可以填写酒店等级和居住人数自动推荐哦</p>
+				</div>
+			</div>
+<!--			int hotelId, int attendeeId, String attendeeTel-->
+			<div class="w3_info">
+				<h2>预定酒店</h2>
+<!--						<form action="#" method="post">-->
+						<div class="input-group">
+							<span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+							<input id="tel" type="text" placeholder="您的电话" required="">
+						</div>
+						<div class="input-group">
+							<span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+							<input id="peopleNum" type="text" placeholder="居住人数" required="">
+						</div>
+						<div class="input-group">
+							<span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+							<input id="grade" type="text" placeholder="期望酒店等级：1，2，3" required="">
+						</div>
+						<div class="input-group">
+							<span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+<!--							<input type="text" placeholder="酒店" required="">-->
+							<input id="hotel" type="text"  placeholder="请输入酒店id">
+
+						</div>
+							<button class="btn btn-danger btn-block" onclick="play1()" >推荐酒店</button >
+							<button class="btn btn-danger btn-block" onclick="play2()">发送订单</button >
+<!--					</form>-->
+			</div>
+			<div class="clear"></div>
+			</div>
+			
+		</div>
+</div>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	function play1(){
+		var grade = $("#grade").val();
+		var num = $("#peopleNum").val();
+		var flag = 1;
+		if(num == null || num=="" || grade == null || grade == "" ){
+			alert("等级和人数不能为空");
+			flag = 0;
+		}
+		if(num > 5){
+			flag = 0;
+			alert("不接受大于5人的预定");
+		}
+		if (flag === 1){
+			$.post("/hotel/hotelRecommend",
+					{peopleNum:num,expectHotelGrade:grade},
+
+					function (res) {
+						if (res.id != null){
+							alert("酒店名："+res.name+"\n酒店id:  "+res.id);
+						} else {
+							alert("没有合适的推荐");
+						}
+					})
+		}
+	}
+	function play2(){
+		var hotelId = $("#hotel").val();
+		var tel = $("#tel").val();
+		var flag = 1;
+		if(tel == null || tel=="" || hotelId == null || hotelId == ""){
+			alert("电话，酒店id不能为空");
+			flag = 0;
+		}
+
+		if (flag === 1){
+			$.post("/hotel/seedHotelOrder",
+					{hotelId:hotelId,attendeeTel:tel},
+
+					function (res) {
+						if (res == true){
+							alert("发送成功");
+							window.location.href ="/agenda";
+						} else {
+							alert("请检查信息");
+						}
+					})
+		}
+	}
+</script>
+</body>
+</html>

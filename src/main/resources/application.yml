@@ -10,6 +10,10 @@ spring:
     encoding: UTF-8
     servlet:
       content-type: text/html
+  session:
+    store-type: redis
 mybatis:
   config-location: classpath:mybatis/mybatisconfig.xml
   mapper-locations: classpath:mybatis/dao/*.xml
+
+
